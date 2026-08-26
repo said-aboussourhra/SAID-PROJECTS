@@ -1296,52 +1296,6 @@ footer.studio-footer span:last-child {
     bottom: 4px;
 }
 
-/* ═══════════════════════════════════════════════════════
-   16 — TECH STACK PILLS & MICRO-METRICS DASHBOARD
-═══════════════════════════════════════════════════════ */
-.studio-tech-stack {
-    display: flex; flex-wrap: wrap; gap: 7px; margin-top: 18px;
-}
-.tech-pill {
-    display: inline-flex; align-items: center; gap: 6px;
-    padding: 4px 11px; border-radius: 999px;
-    background: rgba(10, 10, 14, 0.035);
-    border: 1px solid rgba(10, 10, 14, 0.07);
-    font-size: 9.5px; font-weight: 600; color: var(--ink-secondary);
-    box-shadow: inset 0 1px 1px #fff;
-    transition: all 0.25s var(--ease-spring);
-}
-.tech-pill i { font-size: 8.5px; color: var(--accent-blue); }
-.tech-pill:hover {
-    background: rgba(10, 108, 255, 0.08); border-color: rgba(10, 108, 255, 0.25);
-    color: var(--accent-blue); transform: translateY(-1px);
-}
-
-.studio-metrics-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
-    margin: 20px 0 22px;
-}
-.metric-card {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 248, 251, 0.8) 100%);
-    border: 1px solid rgba(10, 10, 14, 0.08);
-    border-radius: 16px; padding: 12px 8px; text-align: center;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.025), inset 0 1px 1px #fff;
-    transition: transform 0.3s var(--ease-spring), border-color 0.3s ease;
-}
-.metric-card:hover {
-    transform: translateY(-2px); border-color: rgba(10, 108, 255, 0.28);
-    box-shadow: 0 8px 22px rgba(10, 108, 255, 0.08), inset 0 1px 1px #fff;
-}
-.metric-val {
-    font-family: "Fraunces", serif; font-size: clamp(17px, 2.2vw, 24px); font-weight: 800;
-    color: var(--ink-black); line-height: 1.1; margin-bottom: 3px;
-    letter-spacing: -.03em;
-}
-.metric-lbl {
-    font-family: "Space Grotesk", sans-serif; font-size: 8.5px; font-weight: 700;
-    text-transform: uppercase; letter-spacing: .08em; color: var(--ink-muted);
-}
-
 /* Filters & Quick Switcher */
 .studio-filters-wrapper {
     display: flex; align-items: center; gap: 10px; margin-top: 20px;
@@ -1455,8 +1409,6 @@ footer.studio-footer span:last-child {
     .studio-kicker { justify-content: center; }
     .studio-kicker::before { display: none; }
     .studio-desc { margin: 16px auto 0; max-width: 56ch; }
-    .studio-tech-stack { justify-content: center; max-width: 520px; margin: 18px auto 0; }
-    .studio-metrics-grid { max-width: 460px; margin: 20px auto; }
     .studio-actions { justify-content: center; max-width: 440px; margin: 0 auto; }
     .studio-filters-wrapper { justify-content: center; }
     .studio-quick-strip { justify-content: center; }
@@ -1501,12 +1453,6 @@ footer.studio-footer span:last-child {
     .studio-kicker::before { display: none; }
     .studio-title { font-size: clamp(30px, 6.8vw, 44px); text-align: center; }
     .studio-desc { font-size: 14px; line-height: 1.65; margin: 14px auto 0; max-width: 50ch; }
-    .studio-tech-stack { justify-content: center; gap: 6px; margin-top: 16px; }
-    .tech-pill { font-size: 9px; padding: 3.5px 10px; }
-    .studio-metrics-grid { gap: 8px; margin: 18px auto; max-width: 440px; }
-    .metric-card { padding: 10px 6px; border-radius: 14px; }
-    .metric-val { font-size: 19px; }
-    .metric-lbl { font-size: 8px; }
     .studio-actions { gap: 10px; justify-content: center; max-width: 400px; margin: 0 auto; }
     .lux-btn { height: 48px; padding: 0 24px; font-size: 10.5px; flex: 1; justify-content: center; }
     .lux-btn-ghost { width: 48px; height: 48px; flex-shrink: 0; }
@@ -1540,12 +1486,6 @@ footer.studio-footer span:last-child {
     .studio-desc { font-size: 13px; line-height: 1.6; }
     .studio-badge-tag { padding: 4px 11px; font-size: 8px; }
     .studio-kicker { font-size: 9px; }
-    .studio-tech-stack { gap: 5px; }
-    .tech-pill { padding: 3px 8px; font-size: 8.5px; }
-    .studio-metrics-grid { gap: 6px; margin: 14px 0; }
-    .metric-card { padding: 8px 4px; border-radius: 12px; }
-    .metric-val { font-size: 16px; }
-    .metric-lbl { font-size: 7.5px; letter-spacing: .04em; }
     .quick-pill { padding: 5px 11px; font-size: 10px; }
     .browser-url { max-width: 130px; font-size: 7.5px; padding: 2.5px 8px; }
     .browser-tag-badge { display: none; }
@@ -1561,8 +1501,6 @@ footer.studio-footer span:last-child {
     .bignum { font-size: 50px; }
     .studio-title { font-size: 24px; }
     .studio-desc { font-size: 12px; }
-    .metric-val { font-size: 14px; }
-    .metric-lbl { font-size: 6.8px; }
     .browser-controls .dot { width: 6px; height: 6px; }
     .browser-url { max-width: 100px; font-size: 7px; }
     .status-clock { font-size: 8px; }
@@ -1752,6 +1690,58 @@ footer.studio-footer span:last-child {
     .arch-layer { min-width: auto; }
     .stage-device-switch { top: 6px; }
     .dev-switch-btn { padding: 4px 9px; font-size: 9px; }
+}
+
+/* ═══════════════════════════════════════════════════════
+   24 — زر الموسيقى الهادئة العائم (Quiet Ambient Music)
+═══════════════════════════════════════════════════════ */
+#ambientMusicBtn {
+    position: fixed; bottom: 22px; inset-inline-end: 22px; z-index: 9990;
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 8px 14px 8px 9px; border-radius: 999px;
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(10, 10, 14, 0.09);
+    box-shadow: 0 10px 30px rgba(10, 14, 28, 0.10), inset 0 1px 1px #fff;
+    cursor: pointer; color: var(--ink-secondary);
+    transition: all 0.3s var(--ease-spring);
+    opacity: 0.82;
+}
+#ambientMusicBtn:hover {
+    opacity: 1; transform: translateY(-2px);
+    border-color: rgba(10, 108, 255, 0.3); color: var(--accent-blue);
+}
+.amb-disc {
+    width: 27px; height: 27px; border-radius: 50%;
+    display: grid; place-items: center; font-size: 10.5px;
+    background: linear-gradient(135deg, rgba(10, 108, 255, 0.10), rgba(10, 10, 14, 0.05));
+    box-shadow: inset 0 1px 1px #fff;
+}
+.amb-eq { display: flex; align-items: flex-end; gap: 2.5px; height: 15px; }
+.amb-eq i {
+    width: 3px; height: 4px; border-radius: 2px;
+    background: currentColor; opacity: 0.9;
+    transition: height 0.3s ease;
+}
+#ambientMusicBtn.playing {
+    opacity: 1; color: var(--accent-blue);
+    border-color: rgba(10, 108, 255, 0.35);
+    box-shadow: 0 10px 30px rgba(10, 108, 255, 0.16), inset 0 1px 1px #fff;
+}
+#ambientMusicBtn.playing .amb-eq i { animation: ambEq 1.15s ease-in-out infinite; }
+#ambientMusicBtn.playing .amb-eq i:nth-child(1) { animation-delay: 0s; }
+#ambientMusicBtn.playing .amb-eq i:nth-child(2) { animation-delay: 0.18s; }
+#ambientMusicBtn.playing .amb-eq i:nth-child(3) { animation-delay: 0.36s; }
+#ambientMusicBtn.playing .amb-eq i:nth-child(4) { animation-delay: 0.54s; }
+#ambientMusicBtn.playing .amb-disc i { animation: ambSpin 7s linear infinite; }
+@keyframes ambEq {
+    0%, 100% { height: 4px; }
+    50% { height: 15px; }
+}
+@keyframes ambSpin { to { transform: rotate(360deg); } }
+@media(max-width: 768px) {
+    #ambientMusicBtn { bottom: 16px; inset-inline-end: 16px; padding: 7px 12px 7px 8px; }
+    .amb-disc { width: 24px; height: 24px; font-size: 9.5px; }
 }
 </style>
 </head>
@@ -2039,10 +2029,6 @@ footer.studio-footer span:last-child {
                     <span class="u"><span id="tB"><em>Jawebni</em></span></span>
                 </h1>
                 <div class="studio-desc" id="desc">جاوبني... باش تربح وقتك وزبناءك. منصة ذكية توفر الرد الفوري والدقيق للزبناء عبر الذكاء الاصطناعي.</div>
-                <!-- التقنيات المستخدمة في المشروع / التطبيق -->
-                <div class="studio-tech-stack" id="techStack"></div>
-                <!-- مؤشرات ومميزات المشروع بالأرقام -->
-                <div class="studio-metrics-grid" id="projectMetrics"></div>
                 <div class="studio-actions">
                     <button class="lux-btn" id="openBtn"><span id="openTxt">فتح المشروع</span> <span>↗</span></button>
                     <button class="lux-btn-secondary" id="specsBtn" title="المواصفات التقنية والمعمارية"><i class="fa-solid fa-layer-group"></i> <span id="specsTxt">المعمارية</span></button>
@@ -2567,23 +2553,6 @@ footer.studio-footer span:last-child {
                 const openTxtEl = $('#openTxt');
                 if (openTxtEl) {
                     openTxtEl.textContent = (project.openLabel && project.openLabel[lang]) ? project.openLabel[lang] : UI[lang].open;
-                }
-
-                // بطاقات التقنيات المستخدمة (Tech Stack)
-                const stackContainer = $('#techStack');
-                if (stackContainer && project.stack) {
-                    stackContainer.innerHTML = project.stack.map(tech => 
-                        `<span class="tech-pill"><i class="fa-solid fa-code"></i> ${tech}</span>`
-                    ).join('');
-                }
-
-                // شبكة المؤشرات والمميزات الرقمية
-                const metricsContainer = $('#projectMetrics');
-                if (metricsContainer && project.stats) {
-                    metricsContainer.innerHTML = project.stats.map(s => {
-                        const lbl = s.label[lang] || s.label.ar;
-                        return `<div class="metric-card"><div class="metric-val">${s.val}</div><div class="metric-lbl">${lbl}</div></div>`;
-                    }).join('');
                 }
 
                 // شريط التبديل السريع للمشاريع
@@ -3146,6 +3115,7 @@ footer.studio-footer span:last-child {
                     if ($('#lblDevAuto')) $('#lblDevAuto').textContent = u.devAuto;
                     if ($('#lblDevWeb')) $('#lblDevWeb').textContent = u.devWeb;
                     if ($('#lblDevApp')) $('#lblDevApp').textContent = u.devApp;
+                    if (window.refreshAmbientLabel) window.refreshAmbientLabel(l);
                 }
             };
 
@@ -3167,6 +3137,154 @@ footer.studio-footer span:last-child {
             pathEntry.style.display = 'none';
             smoke.style.display = 'none';
             buildProject(0);
+
+            /* ═══════════════════════════════════════════════════════
+               الموسيقى الهادئة — محرك موسيقى توليدية محيطية
+               (Generative Quiet Ambient Music — Web Audio API)
+               لا ملفات صوتية خارجية: تُولَّد النغمات محلياً بهدوء
+               وتنطلق تلقائياً مع أول تفاعل من الزائر (سياسة المتصفحات)
+            ═══════════════════════════════════════════════════════ */
+            const AmbientMusic = (() => {
+                const KEY = 'saidAmbientMusic';
+                const CHORDS = [                      // تتابع أكوردات هادئة (Am9 → Fmaj9 → Cmaj7 → Gadd9)
+                    [45, 52, 60, 64, 71],
+                    [41, 48, 57, 60, 69],
+                    [36, 43, 55, 59, 64],
+                    [38, 45, 55, 62, 66]
+                ];
+                const noteFreq = n => 440 * Math.pow(2, (n - 69) / 12);
+                let ctx = null, master = null, chordTimer = null, chordIdx = 0, playing = false;
+                let voices = [];
+
+                function ensureCtx() {
+                    if (ctx) return;
+                    const AC = window.AudioContext || window.webkitAudioContext;
+                    ctx = new AC();
+                    master = ctx.createGain();
+                    master.gain.value = 0;
+
+                    // مرشح الهواء الدافئ
+                    const air = ctx.createBiquadFilter();
+                    air.type = 'lowpass'; air.frequency.value = 1500; air.Q.value = 0.4;
+
+                    // صدى فضائي ناعم جداً
+                    const delay = ctx.createDelay(1.5); delay.delayTime.value = 0.46;
+                    const fb = ctx.createGain(); fb.gain.value = 0.32;
+                    const damp = ctx.createBiquadFilter(); damp.type = 'lowpass'; damp.frequency.value = 1000;
+                    const wet = ctx.createGain(); wet.gain.value = 0.3;
+
+                    master.connect(air);
+                    air.connect(ctx.destination);
+                    air.connect(delay); delay.connect(damp);
+                    damp.connect(fb); fb.connect(delay);
+                    damp.connect(wet); wet.connect(ctx.destination);
+
+                    // تنفّس بطيء للفلتر (حركة حية)
+                    const lfo = ctx.createOscillator(); lfo.frequency.value = 0.05;
+                    const lfoGain = ctx.createGain(); lfoGain.gain.value = 400;
+                    lfo.connect(lfoGain); lfoGain.connect(air.frequency); lfo.start();
+                }
+
+                function playChord(midis) {
+                    const now = ctx.currentTime, dur = 16;
+                    midis.forEach((n, i) => {
+                        const f = noteFreq(n);
+                        const g = ctx.createGain();
+                        const peak = 0.03 / (1 + i * 0.4);
+                        g.gain.setValueAtTime(0.0001, now);
+                        g.gain.linearRampToValueAtTime(peak, now + 5);        // صعود هادئ
+                        g.gain.setValueAtTime(peak, now + dur - 7);
+                        g.gain.linearRampToValueAtTime(0.0001, now + dur);    // خفوت ناعم
+                        g.connect(master);
+
+                        const oscs = [-2.5, 2.5].map((cents, k) => {
+                            const o = ctx.createOscillator();
+                            o.type = (k === 0) ? 'sine' : 'triangle';
+                            o.frequency.value = f;
+                            o.detune.value = cents;
+                            const og = ctx.createGain();
+                            og.gain.value = (k === 0) ? 1 : 0.25;
+                            o.connect(og); og.connect(g);
+                            o.start(now + Math.random() * 0.5);
+                            o.stop(now + dur + 0.6);
+                            return o;
+                        });
+                        voices.push({ g, oscs });
+                    });
+                }
+
+                function scheduleChords() {
+                    playChord(CHORDS[chordIdx % CHORDS.length]); chordIdx++;
+                    chordTimer = setInterval(() => {
+                        playChord(CHORDS[chordIdx % CHORDS.length]); chordIdx++;
+                    }, 12000);
+                }
+
+                function setBtnState() {
+                    const btn = document.getElementById('ambientMusicBtn');
+                    if (btn) btn.classList.toggle('playing', playing);
+                    if (window.refreshAmbientLabel) window.refreshAmbientLabel();
+                }
+
+                function start() {
+                    if (playing) return;
+                    ensureCtx();
+                    if (ctx.state === 'suspended') ctx.resume();
+                    playing = true;
+                    master.gain.cancelScheduledValues(ctx.currentTime);
+                    master.gain.setTargetAtTime(0.8, ctx.currentTime, 2.5);   // صعود ناعم جداً
+                    scheduleChords();
+                    setBtnState();
+                    try { localStorage.setItem(KEY, 'on'); } catch (e) {}
+                }
+
+                function stop() {
+                    if (!playing) return;
+                    playing = false;
+                    if (chordTimer) { clearInterval(chordTimer); chordTimer = null; }
+                    if (ctx) master.gain.setTargetAtTime(0.0001, ctx.currentTime, 1.1);
+                    const dying = voices; voices = [];
+                    setTimeout(() => {
+                        dying.forEach(v => v.oscs.forEach(o => { try { o.stop(); } catch (e) {} }));
+                    }, 4000);
+                    setBtnState();
+                    try { localStorage.setItem(KEY, 'off'); } catch (e) {}
+                }
+
+                function toggle() { playing ? stop() : start(); }
+
+                return { start, stop, toggle, isPlaying: () => playing };
+            })();
+
+            // تسميات الزر حسب اللغة
+            const ambientLabels = {
+                ar: { on: 'إيقاف الموسيقى الهادئة', off: 'تشغيل الموسيقى الهادئة' },
+                fr: { on: "Couper la musique d'ambiance", off: "Lancer la musique d'ambiance" },
+                en: { on: 'Mute ambient music', off: 'Play ambient music' }
+            };
+            window.refreshAmbientLabel = function (l) {
+                const btn = document.getElementById('ambientMusicBtn');
+                if (!btn) return;
+                const lg = l || (typeof lang === 'string' ? lang : 'ar');
+                const t = ambientLabels[lg] || ambientLabels.ar;
+                const txt = AmbientMusic.isPlaying() ? t.on : t.off;
+                btn.title = txt;
+                btn.setAttribute('aria-label', txt);
+            };
+
+            const ambientBtn = document.getElementById('ambientMusicBtn');
+            if (ambientBtn) {
+                ambientBtn.addEventListener('click', () => AmbientMusic.toggle());
+            }
+
+            // انطلاق تلقائي هادئ مع أول تفاعل (نقرة/لمسة/لوحة مفاتيح) — احتراماً لسياسة المتصفحات
+            let ambientPref = 'on';
+            try { ambientPref = localStorage.getItem('saidAmbientMusic') || 'on'; } catch (e) {}
+            if (ambientPref !== 'off') {
+                ['pointerdown', 'keydown', 'touchstart'].forEach(ev =>
+                    window.addEventListener(ev, () => AmbientMusic.start(), { once: true, passive: true }));
+            }
+            window.refreshAmbientLabel('ar');
 
         });
     </script>
@@ -3201,5 +3319,13 @@ footer.studio-footer span:last-child {
             </div>
         </div>
     </div>
+
+    <!-- ════════════════════════════════════════════
+       زر الموسيقى الهادئة العائم (Quiet Ambient Music)
+    ════════════════════════════════════════════ -->
+    <button type="button" id="ambientMusicBtn" aria-label="الموسيقى الهادئة" title="الموسيقى الهادئة">
+        <span class="amb-disc" aria-hidden="true"><i class="fa-solid fa-music"></i></span>
+        <span class="amb-eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    </button>
 </body>
 </html>
