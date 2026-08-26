@@ -1568,6 +1568,191 @@ footer.studio-footer span:last-child {
     .status-clock { font-size: 8px; }
     .mobile-island { width: 48px; height: 11px; }
 }
+
+/* ═══════════════════════════════════════════════════════
+   18 — STUDIO NAVIGATION TOOLS & DEVICE SWITCHER
+═══════════════════════════════════════════════════════ */
+.studio-nav-tools {
+    display: flex; align-items: center; gap: 14px;
+}
+.studio-lang-picker {
+    display: inline-flex; background: rgba(10, 10, 14, 0.04);
+    border: 1px solid rgba(10, 10, 14, 0.08); border-radius: 999px; padding: 2px;
+}
+.studio-lang-picker .lang-pill {
+    border: none; background: transparent; padding: 4px 10px; border-radius: 999px;
+    font-size: 9.5px; font-weight: 700; color: var(--ink-secondary); cursor: pointer;
+    transition: all 0.25s ease;
+}
+.studio-lang-picker .lang-pill.active {
+    background: #FFFFFF; color: var(--ink-black);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+.portfolio-nav-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 13px; border-radius: 999px;
+    background: rgba(10, 108, 255, 0.06); border: 1px solid rgba(10, 108, 255, 0.15);
+    color: var(--accent-blue); font-size: 9.5px; font-weight: 700; letter-spacing: .12em;
+    text-decoration: none; transition: all 0.25s var(--ease-spring);
+}
+.portfolio-nav-link:hover {
+    background: var(--accent-blue); color: #FFFFFF;
+    box-shadow: 0 4px 14px rgba(10, 108, 255, 0.25); transform: translateY(-1px);
+}
+
+.lux-btn-secondary {
+    height: 52px; padding: 0 20px; border-radius: 999px;
+    background: rgba(10, 10, 14, 0.035); border: 1px solid rgba(10, 10, 14, 0.1);
+    color: var(--ink-secondary); font-size: 11px; font-weight: 700; letter-spacing: .08em;
+    cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
+    box-shadow: inset 0 1px 1px #fff; transition: all 0.3s var(--ease-spring);
+}
+.lux-btn-secondary:hover {
+    background: rgba(10, 108, 255, 0.08); border-color: rgba(10, 108, 255, 0.25);
+    color: var(--accent-blue); transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(10, 108, 255, 0.12), inset 0 1px 1px #fff;
+}
+
+/* Device View Switcher (Above 3D Cube) */
+.stage-device-switch {
+    position: absolute; top: 12px; z-index: 10;
+    display: inline-flex; background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(10, 10, 14, 0.08); border-radius: 999px;
+    padding: 3px; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+.dev-switch-btn {
+    border: none; background: transparent; padding: 5px 12px; border-radius: 999px;
+    font-size: 10px; font-weight: 700; color: var(--ink-secondary); cursor: pointer;
+    display: inline-flex; align-items: center; gap: 5px;
+    transition: all 0.25s var(--ease-spring);
+}
+.dev-switch-btn i { font-size: 9px; }
+.dev-switch-btn:hover { color: var(--ink-black); }
+.dev-switch-btn.active {
+    background: var(--ink-black); color: #FFFFFF;
+    box-shadow: 0 4px 12px rgba(10, 10, 14, 0.2);
+}
+.dev-switch-btn.active i { color: #FFFFFF; }
+
+/* Force Web or App frame override */
+.face.force-web .device-header { background: rgba(255, 255, 255, 0.92) !important; }
+.face.force-web .device-bar-web { display: flex !important; }
+.face.force-web .device-bar-app { display: none !important; }
+.face.force-web .app-home-bar { display: none !important; }
+
+.face.force-app .device-header { background: rgba(248, 248, 250, 0.95) !important; border-bottom-color: rgba(10, 10, 14, 0.05) !important; }
+.face.force-app .device-bar-web { display: none !important; }
+.face.force-app .device-bar-app { display: flex !important; }
+.face.force-app .app-home-bar { display: block !important; }
+
+/* ═══════════════════════════════════════════════════════
+   19 — SPECS & ARCHITECTURE MODAL
+═══════════════════════════════════════════════════════ */
+.specs-modal-backdrop {
+    position: fixed; inset: 0; z-index: 99999;
+    background: rgba(10, 10, 14, 0.5); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    display: flex; align-items: center; justify-content: center; padding: 20px;
+    opacity: 0; pointer-events: none; transition: opacity 0.4s var(--ease-silk);
+}
+.specs-modal-backdrop.open {
+    opacity: 1; pointer-events: auto;
+}
+.specs-modal-card {
+    background: #FFFFFF; border-radius: 28px; width: 100%; max-width: 680px; max-height: 88vh;
+    border: 1.5px solid rgba(10, 10, 14, 0.1);
+    box-shadow: 0 40px 100px -20px rgba(10, 14, 28, 0.28), 0 0 0 1px rgba(255,255,255,0.9) inset;
+    display: flex; flex-direction: column; overflow: hidden;
+    transform: translateY(30px) scale(0.97);
+    transition: transform 0.45s var(--ease-spring);
+}
+.specs-modal-backdrop.open .specs-modal-card {
+    transform: translateY(0) scale(1);
+}
+.specs-modal-header {
+    padding: 24px 28px 18px; border-bottom: 1px solid var(--line-light);
+    display: flex; align-items: flex-start; justify-content: space-between;
+}
+.specs-badge {
+    display: inline-flex; align-items: center; padding: 3px 10px; border-radius: 999px;
+    background: rgba(10, 108, 255, 0.08); border: 1px solid rgba(10, 108, 255, 0.15);
+    color: var(--accent-blue); font-size: 8.5px; font-weight: 700; letter-spacing: .15em;
+    text-transform: uppercase; margin-bottom: 6px;
+}
+.specs-modal-title {
+    font-family: "Fraunces", serif; font-size: 26px; font-weight: 800; color: var(--ink-black); margin: 0;
+}
+.specs-close-btn {
+    width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line-light);
+    background: rgba(10, 10, 14, 0.03); color: var(--ink-secondary); font-size: 14px;
+    cursor: pointer; display: grid; place-items: center; transition: all 0.2s ease;
+}
+.specs-close-btn:hover {
+    background: var(--ink-black); color: #FFFFFF; border-color: var(--ink-black);
+}
+.specs-modal-body {
+    padding: 24px 28px; overflow-y: auto; -webkit-overflow-scrolling: touch;
+    display: flex; flex-direction: column; gap: 24px;
+}
+.specs-sec-title {
+    font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em;
+    color: var(--ink-secondary); margin: 0 0 12px; display: flex; align-items: center; gap: 8px;
+}
+.specs-sec-title i { color: var(--accent-blue); font-size: 11px; }
+.specs-overview-text {
+    font-size: 14px; line-height: 1.7; color: var(--ink-secondary); margin: 0;
+}
+.specs-arch-grid {
+    display: flex; flex-direction: column; gap: 8px;
+}
+.arch-row {
+    display: flex; align-items: baseline; gap: 14px; padding: 10px 14px; border-radius: 12px;
+    background: rgba(10, 10, 14, 0.025); border: 1px solid rgba(10, 10, 14, 0.05);
+}
+.arch-layer {
+    font-family: "Space Grotesk", sans-serif; font-size: 10px; font-weight: 800;
+    text-transform: uppercase; letter-spacing: .08em; color: var(--accent-blue);
+    min-width: 110px; flex-shrink: 0;
+}
+.arch-tech {
+    font-size: 12.5px; color: var(--ink-black); font-weight: 500;
+}
+.specs-features-list {
+    list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px;
+}
+.specs-features-list li {
+    font-size: 13px; color: var(--ink-secondary); display: flex; align-items: center; gap: 10px;
+}
+.specs-features-list li::before {
+    content: "✓"; display: inline-flex; align-items: center; justify-content: center;
+    width: 18px; height: 18px; border-radius: 50%; background: rgba(16, 185, 129, 0.12);
+    color: #10B981; font-size: 10px; font-weight: 800; flex-shrink: 0;
+}
+.specs-modal-footer {
+    padding: 16px 28px; border-top: 1px solid var(--line-light);
+    display: flex; justify-content: flex-end; background: #FAFBFD;
+}
+.specs-live-btn {
+    height: 44px; padding: 0 24px; border-radius: 999px;
+    background: var(--ink-black); border: none; color: #FFFFFF;
+    font-size: 11px; font-weight: 700; letter-spacing: .08em; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 8px;
+    box-shadow: 0 8px 24px rgba(10, 10, 14, 0.2); transition: all 0.3s var(--ease-spring);
+}
+.specs-live-btn:hover {
+    background: var(--accent-blue); transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(10, 108, 255, 0.35);
+}
+
+@media(max-width: 768px) {
+    .specs-modal-card { max-height: 92vh; border-radius: 22px; }
+    .specs-modal-header, .specs-modal-body, .specs-modal-footer { padding: 18px 20px; }
+    .specs-modal-title { font-size: 22px; }
+    .arch-row { flex-direction: column; gap: 4px; }
+    .arch-layer { min-width: auto; }
+    .stage-device-switch { top: 6px; }
+    .dev-switch-btn { padding: 4px 9px; font-size: 9px; }
+}
 </style>
 </head>
 <body>
@@ -1825,6 +2010,16 @@ footer.studio-footer span:last-child {
                 <span>•</span>
                 <span id="hA">جاهز للمشاريع</span>
             </div>
+            <div class="studio-nav-tools">
+                <div class="studio-lang-picker" id="studioLangPicker">
+                    <button type="button" class="lang-pill active" data-l="ar">العربية</button>
+                    <button type="button" class="lang-pill" data-l="fr">FR</button>
+                    <button type="button" class="lang-pill" data-l="en">EN</button>
+                </div>
+                <a href="H.html" class="portfolio-nav-link" title="Paper Portfolio">
+                    <i class="fa-solid fa-file-lines"></i> <span id="portfolioNavLink">PORTFOLIO</span>
+                </a>
+            </div>
         </header>
         <div class="studio-page">
             <div class="studio-info">
@@ -1850,6 +2045,7 @@ footer.studio-footer span:last-child {
                 <div class="studio-metrics-grid" id="projectMetrics"></div>
                 <div class="studio-actions">
                     <button class="lux-btn" id="openBtn"><span id="openTxt">فتح المشروع</span> <span>↗</span></button>
+                    <button class="lux-btn-secondary" id="specsBtn" title="المواصفات التقنية والمعمارية"><i class="fa-solid fa-layer-group"></i> <span id="specsTxt">المعمارية</span></button>
                     <button class="lux-btn-ghost" id="copyBtn" title="Copy Link">⧉</button>
                 </div>
                 <div class="studio-filters-wrapper">
@@ -1863,6 +2059,17 @@ footer.studio-footer span:last-child {
                 <div class="studio-quick-strip" id="quickStrip"></div>
             </div>
             <div class="stage">
+                <div class="stage-device-switch" id="stageDeviceSwitch">
+                    <button class="dev-switch-btn active" data-dev="auto" id="btnDevAuto" title="Adaptive View">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> <span id="lblDevAuto">تلقائي</span>
+                    </button>
+                    <button class="dev-switch-btn" data-dev="web" id="btnDevWeb" title="Desktop Web View">
+                        <i class="fa-solid fa-desktop"></i> <span id="lblDevWeb">حاسوب</span>
+                    </button>
+                    <button class="dev-switch-btn" data-dev="app" id="btnDevApp" title="Mobile App View">
+                        <i class="fa-solid fa-mobile-screen"></i> <span id="lblDevApp">هاتف</span>
+                    </button>
+                </div>
                 <div class="blob" id="blob"></div>
                 <div class="drag-indicator">سحب • Drag</div>
                 <div class="scene" id="scene">
@@ -2032,19 +2239,38 @@ footer.studio-footer span:last-child {
                     urlDisplay: "jawebni.ma",
                     title: { ar: ["جاوبني", "ذكي"], fr: ["Jawebni", "Intelligent"], en: ["Jawebni", "Smart"] },
                     type: { ar: "منصة ويب — مساعد مبيعات ذكي بالذكاء الاصطناعي", fr: "Plateforme Web — Vente IA", en: "Web Platform — AI Sales Assistant" },
-                    badge: { ar: "منصة ويب ذكية", fr: "Plateforme Web IA", en: "AI Web Platform" },
+                    badge: { ar: "منصة ويب تجارية ذكية", fr: "Plateforme Web Commerciale IA", en: "Enterprise AI Web Platform" },
                     openLabel: { ar: "زيارة موقع جاوبني", fr: "Visiter le site Jawebni", en: "Visit Jawebni Web" },
                     desc: {
-                        ar: "جاوبني... باش تربح وقتك وزبناءك. منصة ذكية توفر الرد الفوري والدقيق للزبناء عبر الذكاء الاصطناعي على مدار الساعة مع زيادة ملحوظة في معدل التحويل.",
-                        fr: "Jawebni... Gagnez du temps et vos clients. Plateforme SaaS intelligente de réponse instantanée et conversion des ventes par IA.",
-                        en: "Jawebni... Save time and win customers. Intelligent AI sales assistant providing 24/7 instant client responses and higher conversion."
+                        ar: "جاوبني... باش تربح وقتك وزبناءك. منصة ويب سحابية توفر الرد الفوري والدقيق للزبناء عبر نماذج ذكاء اصطناعي مخصصة للتجارة، تعمل 24/7 لمضاعفة المبيعات وأتمتة خدمة العملاء.",
+                        fr: "Jawebni... Gagnez du temps et convertissez vos prospects. Plateforme Web SaaS intelligente fournissant des réponses instantanées et précises par IA 24/7.",
+                        en: "Jawebni... Save time and win customers. Cloud AI web platform providing 24/7 instantaneous, tailored client responses to accelerate sales conversion and automate customer care."
                     },
-                    stack: ["Next.js", "OpenAI LLM", "TypeScript", "Tailwind CSS", "Supabase", "Vercel"],
+                    stack: ["Next.js 14", "OpenAI LLM", "TypeScript", "Tailwind CSS", "Supabase", "Vercel Edge"],
                     stats: [
-                        { val: "99.4%", label: { ar: "دقة الاستجابة", fr: "Précision IA", en: "AI Accuracy" } },
+                        { val: "99.4%", label: { ar: "دقة الذكاء الاصطناعي", fr: "Précision IA", en: "AI Accuracy" } },
                         { val: "24/7", label: { ar: "استجابة فورية", fr: "Disponibilité", en: "Instant Uptime" } },
                         { val: "+10x", label: { ar: "تحويل المبيعات", fr: "Conversion", en: "Sales Boost" } }
                     ],
+                    specs: {
+                        overview: {
+                            ar: "منصة ويب سحابية متكاملة مصممة خصيصاً لتمكين الشركات والمتاجر الإلكترونية من أتمتة الرد على الزبناء وإتمام صفقات البيع تلقائياً بدقة استثنائية وبلهجات متعددة (الدارجة، العربية، الفرنسية والإنجليزية).",
+                            fr: "Plateforme SaaS complète conçue pour permettre aux entreprises et commerces d'automatiser les échanges clients et la conclusion de ventes 24/7 avec une précision multilingue remarquable.",
+                            en: "Full cloud SaaS platform engineered for enterprises and e-commerce brands to automate customer negotiations, conversions, and inquiries 24/7 with multilingual dialect precision."
+                        },
+                        architecture: [
+                            { layer: "Frontend", tech: "Next.js 14, React Server Components, Tailwind CSS, Framer Motion" },
+                            { layer: "AI Engine", tech: "OpenAI GPT-4o fine-tuned embeddings, Semantic Search, Prompt Optimization" },
+                            { layer: "Backend / API", tech: "Edge Functions, Node.js, Webhooks, RESTful & WebSocket Streaming" },
+                            { layer: "Database", tech: "Supabase PostgreSQL with pgvector for knowledge retrieval, Redis Caching" },
+                            { layer: "Deployment", tech: "Vercel Edge Network, Multi-region CDN, 99.9% High Availability" }
+                        ],
+                        features: {
+                            ar: ["رد فوري في أقل من ثانية", "فهم عميق للهجة المغربية واللغات العالمية", "ربط مباشر مع كتالوج المنتجات والمخزون", "تحليلات مبيعات ولوحة تحكم حية", "تشفير كامل للبيانات وحماية الخصوصية"],
+                            fr: ["Réponse instantanée en moins d'une seconde", "Compréhension du dialecte marocain (Darija) et langues internationales", "Intégration catalogue et stock en temps réel", "Dashboard analytique et KPIs en direct", "Sécurité de bout en bout et conformité"],
+                            en: ["Instant response under 1 second", "Deep dialect understanding (Darija, Arabic, French, English)", "Direct product catalog & inventory synchronization", "Live analytics dashboard & conversion KPIs", "Enterprise encryption and data privacy"]
+                        }
+                    },
                     img: "jawbni.jpg",
                     link: "https://jawebni.ma",
                     blob: ["rgba(0, 210, 255, 0.4)", "rgba(10, 108, 255, 0.3)"]
@@ -2055,19 +2281,38 @@ footer.studio-footer span:last-child {
                     urlDisplay: "hafiz-quran.vercel.app",
                     title: { ar: ["حافظ", "القرآن"], fr: ["Hafiz", "Coran"], en: ["Hafiz", "Quran"] },
                     type: { ar: "تطبيق قرآني متكامل — Quran Memorization Ecosystem", fr: "Application Coranique — Mémorisation", en: "Quran App Ecosystem — Memorization" },
-                    badge: { ar: "تطبيق روحي متطور", fr: "Application Spirituelle", en: "Spiritual App Ecosystem" },
+                    badge: { ar: "تطبيق ويب وهاتف ذكي متطور", fr: "Application Mobile & Web PWA", en: "Spiritual Mobile & Web PWA" },
                     openLabel: { ar: "فتح تطبيق حافظ القرآن", fr: "Ouvrir l'application Hafiz", en: "Launch Hafiz App" },
                     desc: {
-                        ar: "حافظ القرآن، التكنولوجيا في خدمة كتاب الله. منظومة تطبيق حديثة لتسهيل الحفظ والمراجعة اليومية مع تتبع التقدم، تلاوات صوتية، وإحصاءات دقيقة.",
-                        fr: "Hafiz, la technologie au service du Coran. Écosystème d'application mobile et web pour faciliter l'apprentissage et le suivi quotidien.",
-                        en: "Hafiz, modern technology serving the Holy Quran. Complete app ecosystem for effortless memorization, daily tracking, and progress insights."
+                        ar: "حافظ القرآن، التكنولوجيا في خدمة كتاب الله. منظومة تطبيق حديثة (PWA) لتسهيل الحفظ والمراجعة اليومية مع تتبع ذكي للتقدم، تلاوات صوتية لمشاهير القراء، وواجهة روحانية خالية تماماً من الإعلانات.",
+                        fr: "Hafiz, la technologie au service du Coran. Écosystème applicatif (PWA) moderne pour la mémorisation et le suivi quotidien, sans publicité, avec récitations audio complètes.",
+                        en: "Hafiz, modern technology serving the Holy Quran. Complete Progressive Web App ecosystem for daily memorization, audio recitations, intelligent progress tracking, completely ad-free."
                     },
-                    stack: ["React", "Audio Engine", "PWA Mobile", "Offline Sync", "IndexedDB", "Cloud"],
+                    stack: ["React", "Audio Engine", "PWA Mobile", "Offline Sync", "IndexedDB", "Cloud CDN"],
                     stats: [
                         { val: "60 حزباً", label: { ar: "المصحف كاملاً", fr: "Coran Complet", en: "Full Quran" } },
-                        { val: "100%", label: { ar: "بدون إعلانات", fr: "Sans Pub", en: "100% Ad-free" } },
+                        { val: "100%", label: { ar: "بدون إعلانات", fr: "Sans Publicité", en: "100% Ad-free" } },
                         { val: "أوفلاين", label: { ar: "يعمل دون إنترنت", fr: "Mode Hors-ligne", en: "Offline Ready" } }
                     ],
+                    specs: {
+                        overview: {
+                            ar: "منظومة تطبيق قرآني تقدمية (Progressive Web App) صممت لتوفير تجربة استثنائية لحفاظ القرآن الكريم. تدعم التثبيت الفوري على هواتف iOS وAndroid والعمل بكفاءة تامة دون الحاجة إلى اتصال بالإنترنت.",
+                            fr: "Application Web Progressive (PWA) conçue pour offrir une expérience spirituelle optimale aux mémorisateurs du Coran, installable sur iOS/Android avec prise en charge hors-ligne totale.",
+                            en: "A Progressive Web App (PWA) ecosystem designed to empower Quran learners and memorizers worldwide, fully installable on iOS and Android devices with robust offline capabilities."
+                        },
+                        architecture: [
+                            { layer: "Application Core", tech: "React, Modern Component Architecture, Clean State Management" },
+                            { layer: "Audio Subsystem", tech: "HTML5 Web Audio API with pre-buffering, verse looping & high-bitrate streaming" },
+                            { layer: "Offline & Storage", tech: "Service Workers (PWA Cache API), IndexedDB for progress persistence" },
+                            { layer: "Typography & UI", tech: "High-precision Uthmanic Quranic script rendering, dark/light spiritual themes" },
+                            { layer: "Hosting & Edge", tech: "Vercel Global Edge Network, CDN audio asset distribution" }
+                        ],
+                        features: {
+                            ar: ["المصحف الشريف كاملاً برسم العثماني الدقيق", "محرك صوتي متقدم لتكرار الآيات وتثبيت الحفظ", "يعمل 100% أوفلاين مع حفظ التقدم محلياً", "تصميم روحاني راقٍ وخالٍ تماماً من الإعلانات", "تطبيق خفيف وسريع متوافق مع كافة الشاشات"],
+                            fr: ["Coran complet en calligraphie Othmani de haute précision", "Moteur audio de répétition de versets pour ancrer la mémorisation", "Fonctionne 100% hors-ligne avec sauvegarde locale", "Interface spirituelle pure sans aucune publicité", "Ultra-léger, rapide et adapté à tous les écrans"],
+                            en: ["Complete Holy Quran in verified Uthmanic typography", "Advanced audio engine with verse looping for retention", "100% offline functionality with local progress sync", "Distraction-free spiritual UI with zero advertisements", "Ultra-fast PWA compatible with all device viewports"]
+                        }
+                    },
                     img: "HAFIZ.jpg",
                     link: "https://hafiz-quran-memorization-ecosystem.vercel.app/",
                     blob: ["rgba(198, 161, 91, 0.45)", "rgba(10, 108, 255, 0.25)"]
@@ -2075,9 +2320,27 @@ footer.studio-footer span:last-child {
             ];
 
             const UI = {
-                ar: { enter: "دخول المجموعة — Enter", count: "أعمال مميزة", avail: "جاهز للمشاريع", all: "الكل", web: "مواقع الويب", apps: "تطبيقات ذكية", open: "فتح المشروع", copied: "تم النسخ بنجاح" },
-                fr: { enter: "Entrer dans la collection", count: "œuvres d'exception", avail: "Disponible pour projets", all: "Tous", web: "Sites Web", apps: "Applications", open: "Explorer le projet", copied: "Lien copié" },
-                en: { enter: "Enter Collection", count: "signature works", avail: "Available for projects", all: "All", web: "Websites", apps: "Mobile Apps", open: "Explore Project", copied: "Link copied" }
+                ar: {
+                    enter: "دخول المجموعة — Enter", count: "أعمال مميزة", avail: "جاهز للمشاريع",
+                    all: "الكل", web: "مواقع الويب", apps: "تطبيقات ذكية", open: "فتح المشروع",
+                    copied: "تم النسخ بنجاح", specs: "المعمارية والمواصفات",
+                    devAuto: "تلقائي", devWeb: "حاسوب", devApp: "هاتف",
+                    secOverview: "نظرة عامة على المشروع", secArch: "المعمارية والتقنيات", secFeat: "أبرز الميزات والقدرات"
+                },
+                fr: {
+                    enter: "Entrer dans la collection", count: "œuvres d'exception", avail: "Disponible pour projets",
+                    all: "Tous", web: "Sites Web", apps: "Applications", open: "Explorer le projet",
+                    copied: "Lien copié", specs: "Architecture & Specs",
+                    devAuto: "Auto", devWeb: "Desktop", devApp: "Mobile",
+                    secOverview: "Vue d'ensemble", secArch: "Architecture & Stack", secFeat: "Fonctionnalités clés"
+                },
+                en: {
+                    enter: "Enter Collection", count: "signature works", avail: "Available for projects",
+                    all: "All", web: "Websites", apps: "Mobile Apps", open: "Explore Project",
+                    copied: "Link copied", specs: "Specs & Architecture",
+                    devAuto: "Auto", devWeb: "Desktop", devApp: "Mobile",
+                    secOverview: "Project Overview", secArch: "Architecture & Stack", secFeat: "Key Features"
+                }
             };
 
             /* ===== الستارة السينمائية الفائقة (Curtain Wipe Transition) ===== */
@@ -2779,6 +3042,126 @@ footer.studio-footer span:last-child {
                     .from('.language-card-item', { opacity: 0, y: 50, scale: .96, duration: .9, stagger: .12 }, '-=.4');
             }
 
+            
+            /* ===== نظام تبديل نمط عرض الأجهزة (Device View Mode Switcher) ===== */
+            let currentDevMode = 'auto'; // 'auto' | 'web' | 'app'
+            const devSwitchBtns = $$('.dev-switch-btn');
+
+            function applyDeviceViewMode(mode) {
+                currentDevMode = mode;
+                devSwitchBtns.forEach(btn => btn.classList.toggle('active', btn.dataset.dev === mode));
+
+                const faceFront = $('#faceFront');
+                const faceBack = $('#faceBack');
+                [faceFront, faceBack].forEach(face => {
+                    if (!face) return;
+                    face.classList.remove('force-web', 'force-app');
+                    if (mode === 'web') face.classList.add('force-web');
+                    if (mode === 'app') face.classList.add('force-app');
+                });
+            }
+
+            devSwitchBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    applyDeviceViewMode(btn.dataset.dev);
+                });
+            });
+
+            /* ===== نافذة المعمارية والمواصفات التقنية (Specs & Architecture Modal) ===== */
+            const specsModal = $('#specsModal');
+            const specsBtn = $('#specsBtn');
+            const closeSpecsModal = $('#closeSpecsModal');
+            const modalLiveBtn = $('#modalLiveBtn');
+
+            function populateSpecsModal(index) {
+                const project = WORKS[index];
+                if (!project || !project.specs) return;
+
+                const badgeStr = (project.badge && project.badge[lang]) || project.badge.ar;
+                const titleStr = `${project.title[lang] ? project.title[lang][0] : project.title.ar[0]} ${project.title[lang] ? project.title[lang][1] : project.title.ar[1]}`;
+                
+                $('#modalBadge').textContent = badgeStr;
+                $('#modalTitle').textContent = titleStr;
+
+                const u = UI[lang];
+                $('#modalSecOverviewTitle').textContent = u.secOverview;
+                $('#modalSecArchTitle').textContent = u.secArch;
+                $('#modalSecFeatTitle').textContent = u.secFeat;
+
+                $('#modalOverviewText').textContent = project.specs.overview[lang] || project.specs.overview.ar;
+
+                const archGrid = $('#modalArchGrid');
+                archGrid.innerHTML = project.specs.architecture.map(a => 
+                    `<div class="arch-row"><span class="arch-layer">${a.layer}</span><span class="arch-tech">${a.tech}</span></div>`
+                ).join('');
+
+                const featuresList = $('#modalFeaturesList');
+                const feats = project.specs.features[lang] || project.specs.features.ar;
+                featuresList.innerHTML = feats.map(f => `<li>${f}</li>`).join('');
+
+                modalLiveBtn.onclick = () => {
+                    if (project.link && project.link !== '#') window.open(project.link, '_blank', 'noopener,noreferrer');
+                };
+            }
+
+            function openSpecs() {
+                populateSpecsModal(currentProject);
+                specsModal.classList.add('open');
+                specsModal.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeSpecs() {
+                specsModal.classList.remove('open');
+                specsModal.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+            }
+
+            specsBtn?.addEventListener('click', openSpecs);
+            closeSpecsModal?.addEventListener('click', closeSpecs);
+            specsModal?.addEventListener('click', (e) => {
+                if (e.target === specsModal) closeSpecs();
+            });
+            window.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && specsModal?.classList.contains('open')) closeSpecs();
+            });
+
+            /* ===== مبدل اللغات داخل ترويسة الاستوديو (Studio Header Lang Picker) ===== */
+            $$('#studioLangPicker .lang-pill').forEach(pill => {
+                pill.addEventListener('click', () => {
+                    $$('#studioLangPicker .lang-pill').forEach(p => p.classList.remove('active'));
+                    pill.classList.add('active');
+                    setLanguage(pill.dataset.l);
+                });
+            });
+
+            // تحديث مؤشر لغة الترويسة عند تغيير اللغة
+            const origSetLanguage = setLanguage;
+            setLanguage = function(l) {
+                origSetLanguage(l);
+                $$('#studioLangPicker .lang-pill').forEach(p => p.classList.toggle('active', p.dataset.l === l));
+                const u = UI[l];
+                if (u) {
+                    if ($('#specsTxt')) $('#specsTxt').textContent = l === 'ar' ? 'المعمارية' : (l === 'fr' ? 'Architecture' : 'Specs');
+                    if ($('#lblDevAuto')) $('#lblDevAuto').textContent = u.devAuto;
+                    if ($('#lblDevWeb')) $('#lblDevWeb').textContent = u.devWeb;
+                    if ($('#lblDevApp')) $('#lblDevApp').textContent = u.devApp;
+                }
+            };
+
+            /* ===== الدخول المباشر إلى الاستوديو عبر Hash الرابط ===== */
+            if (window.location.hash === '#studio' || window.location.hash === '#projects') {
+                entry.style.display = 'none';
+                pathEntry.style.display = 'none';
+                smoke.style.display = 'none';
+                main.style.display = 'block';
+                requestAnimationFrame(() => {
+                    main.classList.add('ready');
+                    startAutoPlay();
+                    cube.classList.add('spin');
+                });
+            }
+
             setLanguage('ar');
             main.style.display = 'none';
             pathEntry.style.display = 'none';
@@ -2787,5 +3170,36 @@ footer.studio-footer span:last-child {
 
         });
     </script>
+    <!-- ════════════════════════════════════════════
+       نافذة المعمارية والمواصفات التقنية (Specs Modal)
+    ════════════════════════════════════════════ -->
+    <div id="specsModal" class="specs-modal-backdrop" aria-hidden="true">
+        <div class="specs-modal-card">
+            <div class="specs-modal-header">
+                <div class="specs-title-group">
+                    <div class="specs-badge" id="modalBadge">AI WEB PLATFORM</div>
+                    <h3 class="specs-modal-title" id="modalTitle">معمارية المشروع</h3>
+                </div>
+                <button type="button" class="specs-close-btn" id="closeSpecsModal" aria-label="Close">✕</button>
+            </div>
+            <div class="specs-modal-body">
+                <div class="specs-section">
+                    <h4 class="specs-sec-title"><i class="fa-solid fa-circle-info"></i> <span id="modalSecOverviewTitle">نظرة عامة</span></h4>
+                    <p class="specs-overview-text" id="modalOverviewText"></p>
+                </div>
+                <div class="specs-section">
+                    <h4 class="specs-sec-title"><i class="fa-solid fa-network-wired"></i> <span id="modalSecArchTitle">المعمارية والتقنيات المستخدمة</span></h4>
+                    <div class="specs-arch-grid" id="modalArchGrid"></div>
+                </div>
+                <div class="specs-section">
+                    <h4 class="specs-sec-title"><i class="fa-solid fa-star"></i> <span id="modalSecFeatTitle">أبرز الميزات والقدرات</span></h4>
+                    <ul class="specs-features-list" id="modalFeaturesList"></ul>
+                </div>
+            </div>
+            <div class="specs-modal-footer">
+                <button type="button" class="specs-live-btn" id="modalLiveBtn"><span>فتح المشروع المباشر</span> <span>↗</span></button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
