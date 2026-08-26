@@ -739,7 +739,7 @@ header.studio-header {
     border-bottom: 1px solid var(--line-light);
     box-shadow: 0 4px 20px rgba(0,0,0,0.02);
 }
-@media(max-width:430px) { header.studio-header { padding: 14px 18px; } }
+
 
 .studio-logo { font-family: "Fraunces", serif; font-weight: 900; font-size: 22px; letter-spacing: -.04em; color: var(--ink-black); }
 .studio-logo em { font-family: "Instrument Serif", serif; font-style: italic; font-weight: 400; color: var(--ink-muted); }
@@ -753,8 +753,8 @@ header.studio-header {
     display: grid; grid-template-columns: 1.15fr 1fr;
     min-height: calc(100vh - 72px); align-items: center; gap: 48px;
 }
-@media(max-width:1100px) { .studio-page { grid-template-columns: 1fr; padding-bottom: 80px; } .studio-info { padding-top: 36px; } }
-@media(max-width:430px) { .studio-page { padding: 0 18px; padding-bottom: 50px; } }
+
+
 
 .studio-info { padding: 20px 0 0; }
 
@@ -788,7 +788,7 @@ header.studio-header {
     vertical-align: super; margin-left: 10px; position: relative; top: -34px;
     color: var(--ink-muted); font-weight: 600;
 }
-@media(max-width:430px) { .bignum { font-size: 56px; } .bignum sub { font-size: 9px; top: -22px; } }
+
 
 .lux-line { height: 2px; background: var(--line-light); margin: 24px 0; position: relative; overflow: hidden; border-radius: 2px; }
 .lux-line i {
@@ -883,8 +883,8 @@ header.studio-header {
 .stage {
     position: relative; height: 640px; display: grid; place-items: center; perspective: 1400px;
 }
-@media(max-width:1100px) { .stage { height: 500px; } }
-@media(max-width:430px) { .stage { height: 310px; } }
+
+
 
 .blob {
     position: absolute; width: 540px; height: 540px; border-radius: 60% 40% 45% 55% / 50% 55% 45% 50%;
@@ -896,16 +896,16 @@ header.studio-header {
     33% { border-radius: 45% 60% 55% 40% / 55% 40% 60% 45%; transform: translate(2%, 2%) scale(1.05); }
     66% { border-radius: 55% 45% 40% 60% / 40% 60% 50% 55%; transform: translate(-1%, 1%) scale(.96); }
 }
-@media(max-width:430px) { .blob { width: 280px; height: 280px; filter: blur(24px); } }
+
 
 .scene {
     width: 370px; height: 370px; perspective: 1600px; position: relative; z-index: 2;
     animation: floatSlow 7s ease-in-out infinite;
 }
 @keyframes floatSlow { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-16px); } }
-@media(max-width:1100px) { .scene { width: 310px; height: 310px; } }
-@media(max-width:700px) { .scene { width: min(250px, 66vw); height: min(250px, 66vw); } }
-@media(max-width:430px) { .scene { width: 205px; height: 205px; } }
+
+
+
 
 .cube {
     width: 100%; height: 100%; position: relative; transform-style: preserve-3d;
@@ -1000,10 +1000,7 @@ header.studio-header {
     box-shadow: 0 0 10px var(--accent-blue);
     animation: pulseGlow 1.8s infinite ease-in-out;
 }
-@media(max-width:430px) {
-    .face { border-radius: 24px; padding: 9px; }
-    .face-badge { top: 14px; left: 14px; padding: 4px 11px 4px 8px; font-size: 8px; }
-}
+
 
 /* Illuminated Gallery Pedestal Stage */
 .shadow-stage {
@@ -1075,7 +1072,7 @@ header.studio-header {
     display: flex; align-items: center; gap: 12px; font-weight: 700;
 }
 .drag-indicator::before { content: ""; width: 24px; height: 1.5px; background: var(--line-medium); }
-@media(max-width:1100px) { .drag-indicator { display: none; } }
+
 
 /* ═══════════════════════════════════════════════════════
    13 — FOOTER
@@ -1090,9 +1087,7 @@ footer.studio-footer span:last-child {
     font-family: "Instrument Serif", serif; font-style: italic; letter-spacing: .04em;
     text-transform: none; font-size: 14px; color: var(--ink-secondary);
 }
-@media(max-width:430px) {
-    footer.studio-footer { flex-direction: column; align-items: center; gap: 8px; text-align: center; padding: 14px 16px; font-size: 8px; }
-}
+
 
 /* ═══════════════════════════════════════════════════════
    14 — REDUCED MOTION
@@ -1169,7 +1164,411 @@ footer.studio-footer span:last-child {
 .path-choice-card:hover .card-border-glow {
     opacity: 1;
 }
-    </style>
+
+/* ═══════════════════════════════════════════════════════
+   15 — ADAPTIVE LUXURY DEVICE FRAMES (WEB & MOBILE APPS)
+═══════════════════════════════════════════════════════ */
+.device-header {
+    position: absolute; top: 0; left: 0; right: 0; height: 34px; z-index: 6;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(10, 10, 14, 0.08);
+    display: flex; align-items: center; padding: 0 14px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    transition: all 0.4s var(--ease-spring);
+}
+
+/* --- Web Browser Bar (macOS Safari/Chrome Style) --- */
+.device-bar-web {
+    display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 10px;
+}
+.browser-controls {
+    display: flex; align-items: center; gap: 6px; flex-shrink: 0;
+}
+.browser-controls .dot {
+    width: 8px; height: 8px; border-radius: 50%; display: inline-block;
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+.browser-controls .dot.red { background: #FF5F56; border: 1px solid #E0443E; box-shadow: 0 0 4px rgba(255,95,86,0.4); }
+.browser-controls .dot.yellow { background: #FFBD2E; border: 1px solid #DEA123; box-shadow: 0 0 4px rgba(255,189,46,0.4); }
+.browser-controls .dot.green { background: #27C93F; border: 1px solid #1AAB29; box-shadow: 0 0 4px rgba(39,201,63,0.4); }
+.browser-controls:hover .dot { transform: scale(1.1); }
+
+.browser-nav-btns {
+    display: flex; align-items: center; gap: 4px; color: var(--ink-muted); font-size: 11px; font-weight: 700; user-select: none;
+}
+.nav-b-btn {
+    width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center;
+    border-radius: 4px; cursor: pointer; transition: background 0.2s ease;
+}
+.nav-b-btn:hover { background: rgba(10,10,14,0.06); color: var(--ink-black); }
+
+.browser-url {
+    flex: 1; max-width: 200px; margin: 0 auto;
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    padding: 3.5px 12px; border-radius: 999px;
+    background: rgba(10, 10, 14, 0.045);
+    border: 1px solid rgba(10, 10, 14, 0.07);
+    font-size: 8.5px; font-family: "Space Grotesk", sans-serif;
+    color: var(--ink-secondary); font-weight: 600; letter-spacing: .04em;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.03);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    transition: all 0.3s ease;
+}
+.browser-url i { font-size: 8px; color: #10B981; flex-shrink: 0; }
+.browser-url .refresh-icon { font-size: 7.5px; color: var(--ink-muted); cursor: pointer; margin-left: 2px; }
+.browser-url:hover {
+    background: rgba(255,255,255,0.9); border-color: rgba(10,108,255,0.3);
+    box-shadow: 0 2px 8px rgba(10,108,255,0.12);
+}
+
+.browser-tag-badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 2px 7px; border-radius: 999px;
+    background: rgba(10, 108, 255, 0.08); border: 1px solid rgba(10, 108, 255, 0.15);
+    font-size: 7.5px; font-weight: 700; color: var(--accent-blue); letter-spacing: .1em;
+}
+.browser-tag-badge .badge-dot-live {
+    width: 4px; height: 4px; border-radius: 50%; background: var(--accent-blue);
+    animation: livePulse 2s infinite ease-in-out;
+}
+@keyframes livePulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+/* --- Mobile App Frame Status Bar (iOS Dynamic Island Style) --- */
+.device-bar-app {
+    display: none; align-items: center; justify-content: space-between; width: 100%;
+}
+.status-clock {
+    font-family: "Space Grotesk", -apple-system, sans-serif; font-size: 9.5px; font-weight: 700;
+    color: var(--ink-black); letter-spacing: -.02em; padding-left: 4px;
+}
+.mobile-island {
+    width: 68px; height: 14px; background: #000000; border-radius: 999px;
+    display: flex; align-items: center; justify-content: space-between; padding: 0 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.35), inset 0 1px 1px rgba(255,255,255,0.16);
+    position: relative;
+}
+.island-cam {
+    width: 5px; height: 5px; border-radius: 50%; background: #161823;
+    box-shadow: inset 0 0 2px rgba(10, 108, 255, 0.8);
+}
+.island-pulse {
+    width: 4px; height: 4px; border-radius: 50%; background: #22C55E;
+    box-shadow: 0 0 5px #22C55E; animation: islandBlink 2.4s infinite ease-in-out;
+}
+@keyframes islandBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+.status-signals {
+    display: flex; align-items: center; gap: 5px; font-size: 8px; color: var(--ink-black); padding-right: 4px;
+}
+.status-signals .network-badge {
+    font-size: 7px; font-weight: 800; font-family: "Space Grotesk", sans-serif; letter-spacing: -.03em;
+}
+
+/* iOS Home Indicator Bar */
+.app-home-bar {
+    display: none; position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%);
+    width: 90px; height: 3.5px; background: rgba(255, 255, 255, 0.85); border-radius: 999px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.3); z-index: 6; pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+/* Toggle Web vs App Frames */
+.face.is-web .device-header { background: rgba(255, 255, 255, 0.92); }
+.face.is-web .device-bar-web { display: flex; }
+.face.is-web .device-bar-app { display: none; }
+.face.is-web .app-home-bar { display: none; }
+
+.face.is-app .device-header { background: rgba(248, 248, 250, 0.95); border-bottom-color: rgba(10, 10, 14, 0.05); }
+.face.is-app .device-bar-web { display: none; }
+.face.is-app .device-bar-app { display: flex; }
+.face.is-app .app-home-bar { display: block; }
+
+.face .face-img {
+    top: 34px;
+}
+.face.is-app .face-img {
+    bottom: 4px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   16 — TECH STACK PILLS & MICRO-METRICS DASHBOARD
+═══════════════════════════════════════════════════════ */
+.studio-tech-stack {
+    display: flex; flex-wrap: wrap; gap: 7px; margin-top: 18px;
+}
+.tech-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 4px 11px; border-radius: 999px;
+    background: rgba(10, 10, 14, 0.035);
+    border: 1px solid rgba(10, 10, 14, 0.07);
+    font-size: 9.5px; font-weight: 600; color: var(--ink-secondary);
+    box-shadow: inset 0 1px 1px #fff;
+    transition: all 0.25s var(--ease-spring);
+}
+.tech-pill i { font-size: 8.5px; color: var(--accent-blue); }
+.tech-pill:hover {
+    background: rgba(10, 108, 255, 0.08); border-color: rgba(10, 108, 255, 0.25);
+    color: var(--accent-blue); transform: translateY(-1px);
+}
+
+.studio-metrics-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+    margin: 20px 0 22px;
+}
+.metric-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 248, 251, 0.8) 100%);
+    border: 1px solid rgba(10, 10, 14, 0.08);
+    border-radius: 16px; padding: 12px 8px; text-align: center;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.025), inset 0 1px 1px #fff;
+    transition: transform 0.3s var(--ease-spring), border-color 0.3s ease;
+}
+.metric-card:hover {
+    transform: translateY(-2px); border-color: rgba(10, 108, 255, 0.28);
+    box-shadow: 0 8px 22px rgba(10, 108, 255, 0.08), inset 0 1px 1px #fff;
+}
+.metric-val {
+    font-family: "Fraunces", serif; font-size: clamp(17px, 2.2vw, 24px); font-weight: 800;
+    color: var(--ink-black); line-height: 1.1; margin-bottom: 3px;
+    letter-spacing: -.03em;
+}
+.metric-lbl {
+    font-family: "Space Grotesk", sans-serif; font-size: 8.5px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .08em; color: var(--ink-muted);
+}
+
+/* Filters & Quick Switcher */
+.studio-filters-wrapper {
+    display: flex; align-items: center; gap: 10px; margin-top: 20px;
+}
+.studio-filters {
+    display: inline-flex; background: rgba(10, 10, 14, 0.04);
+    padding: 3px; border-radius: 999px; border: 1px solid rgba(10, 10, 14, 0.06);
+}
+.studio-filters button {
+    border: none; background: transparent; padding: 6px 14px;
+    font-size: 10.5px; font-weight: 700; border-radius: 999px;
+    color: var(--ink-secondary); cursor: pointer; transition: all 0.3s ease;
+    display: inline-flex; align-items: center; gap: 5px;
+}
+.studio-filters button .filter-count {
+    font-size: 9px; opacity: 0.65;
+}
+.studio-filters button.on {
+    background: #FFFFFF; color: var(--ink-black);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.studio-quick-strip {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px;
+}
+.quick-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 14px; border-radius: 999px;
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid rgba(10, 10, 14, 0.09);
+    font-size: 11px; cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03), inset 0 1px 1px #fff;
+    transition: all 0.35s var(--ease-spring);
+}
+.quick-pill i { font-size: 12px; color: var(--accent-blue); }
+.quick-pill .pill-cat {
+    font-size: 8.5px; letter-spacing: .15em; text-transform: uppercase;
+    background: rgba(10, 108, 255, 0.08); color: var(--accent-blue);
+    padding: 2px 6px; border-radius: 999px; font-weight: 700;
+}
+.quick-pill .pill-name { font-weight: 700; color: var(--ink-black); }
+.quick-pill:hover {
+    border-color: var(--accent-blue); transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(10, 108, 255, 0.15);
+}
+.quick-pill.active {
+    border-color: var(--accent-blue);
+    background: linear-gradient(135deg, rgba(10,108,255,0.08) 0%, rgba(0,210,255,0.04) 100%);
+    box-shadow: 0 6px 20px rgba(10, 108, 255, 0.2);
+}
+
+/* ═══════════════════════════════════════════════════════
+   17 — PERFECT ARCHITECTURAL RESPONSIVENESS (ALL DEVICES)
+═══════════════════════════════════════════════════════ */
+
+/* Large Desktop Screens & 4K Displays (>= 1440px) */
+@media(min-width: 1440px) {
+    .studio-page {
+        max-width: 1680px; padding: 0 56px; gap: 64px;
+        min-height: calc(100vh - 80px);
+    }
+    .scene { width: 400px; height: 400px; }
+    .stage { height: 660px; }
+    .bignum { font-size: 136px; }
+    .browser-url { max-width: 220px; font-size: 9.5px; }
+}
+
+/* Standard Desktops & Laptops (1025px - 1439px) */
+@media(min-width: 1025px) and (max-width: 1439px) {
+    .studio-page {
+        max-width: 1380px; padding: 0 36px; gap: 40px;
+        min-height: calc(100vh - 72px);
+    }
+    .scene { width: 340px; height: 340px; }
+    .stage { height: 580px; }
+    .bignum { font-size: 105px; }
+    .browser-url { max-width: 180px; }
+}
+
+/* Tablets in Landscape (961px - 1024px) */
+@media(min-width: 961px) and (max-width: 1024px) {
+    .studio-page {
+        padding: 0 28px; gap: 32px;
+        grid-template-columns: 1.1fr 1fr;
+    }
+    .scene { width: 300px; height: 300px; }
+    .stage { height: 520px; }
+    .bignum { font-size: 90px; }
+    .browser-url { max-width: 160px; }
+}
+
+/* Tablets Portrait & Large Phablets (769px - 960px) */
+@media(min-width: 769px) and (max-width: 960px) {
+    .studio-page {
+        display: flex; flex-direction: column;
+        max-width: 740px; margin: 0 auto;
+        padding: 24px 32px 75px; gap: 36px;
+        min-height: auto;
+    }
+    .stage {
+        order: -1; height: auto; min-height: 460px;
+        padding: 20px 0 85px; margin: 0 auto; width: 100%;
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+    }
+    .scene { width: 330px; height: 330px; }
+    .studio-info {
+        order: 1; padding: 0; text-align: center;
+    }
+    .studio-badge-tag { margin: 0 auto 14px; }
+    .num-row { justify-content: center; }
+    .studio-kicker { justify-content: center; }
+    .studio-kicker::before { display: none; }
+    .studio-desc { margin: 16px auto 0; max-width: 56ch; }
+    .studio-tech-stack { justify-content: center; max-width: 520px; margin: 18px auto 0; }
+    .studio-metrics-grid { max-width: 460px; margin: 20px auto; }
+    .studio-actions { justify-content: center; max-width: 440px; margin: 0 auto; }
+    .studio-filters-wrapper { justify-content: center; }
+    .studio-quick-strip { justify-content: center; }
+    .progress-bar-wrap { bottom: 50px; left: 18%; right: 18%; }
+    .nav-controls { bottom: 0; }
+    .drag-indicator { display: none; }
+}
+
+/* Standard Mobile Devices (481px - 768px) */
+@media(max-width: 768px) {
+    header.studio-header { padding: 14px 20px; }
+    .studio-page {
+        display: flex; flex-direction: column;
+        padding: 16px 20px 65px; gap: 28px;
+        min-height: auto;
+    }
+    .stage {
+        order: -1; height: auto; min-height: 400px;
+        padding: 15px 0 80px; margin: 0 auto; width: 100%;
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+    }
+    .scene {
+        width: min(290px, 75vw); height: min(290px, 75vw);
+    }
+    .blob {
+        width: min(340px, 86vw); height: min(340px, 86vw);
+        filter: blur(28px);
+    }
+    .pedestal-disk-outer { width: 260px; height: 30px; }
+    .progress-bar-wrap { bottom: 52px; left: 14%; right: 14%; }
+    .nav-controls { bottom: 0px; gap: 14px; }
+    .nav-arrow { width: 44px; height: 44px; font-size: 16px; }
+
+    .studio-info {
+        order: 1; padding: 0; text-align: center;
+    }
+    .studio-badge-tag { margin: 0 auto 12px; }
+    .num-row { justify-content: center; }
+    .bignum { font-size: 74px; }
+    .bignum sub { font-size: 10px; top: -18px; }
+    .studio-kicker { justify-content: center; font-size: 10px; }
+    .studio-kicker::before { display: none; }
+    .studio-title { font-size: clamp(30px, 6.8vw, 44px); text-align: center; }
+    .studio-desc { font-size: 14px; line-height: 1.65; margin: 14px auto 0; max-width: 50ch; }
+    .studio-tech-stack { justify-content: center; gap: 6px; margin-top: 16px; }
+    .tech-pill { font-size: 9px; padding: 3.5px 10px; }
+    .studio-metrics-grid { gap: 8px; margin: 18px auto; max-width: 440px; }
+    .metric-card { padding: 10px 6px; border-radius: 14px; }
+    .metric-val { font-size: 19px; }
+    .metric-lbl { font-size: 8px; }
+    .studio-actions { gap: 10px; justify-content: center; max-width: 400px; margin: 0 auto; }
+    .lux-btn { height: 48px; padding: 0 24px; font-size: 10.5px; flex: 1; justify-content: center; }
+    .lux-btn-ghost { width: 48px; height: 48px; flex-shrink: 0; }
+    .studio-filters-wrapper { justify-content: center; }
+    .studio-quick-strip { justify-content: center; }
+    .drag-indicator { display: none; }
+    footer.studio-footer { flex-direction: column; align-items: center; gap: 8px; text-align: center; padding: 16px 20px; font-size: 8.5px; }
+}
+
+/* Small Phones (361px - 480px) */
+@media(max-width: 480px) {
+    header.studio-header { padding: 12px 16px; }
+    .studio-logo { font-size: 19px; }
+    .header-meta { font-size: 8.5px; gap: 10px; }
+    .studio-page { padding: 12px 14px 55px; gap: 22px; }
+    .stage { min-height: 350px; padding: 10px 0 75px; }
+    .scene { width: min(245px, 72vw); height: min(245px, 72vw); }
+    .blob { width: 260px; height: 260px; filter: blur(22px); }
+    .pedestal-disk-outer { width: 220px; height: 26px; }
+    .face { border-radius: 24px; padding: 9px; }
+    .face-badge { top: 12px; left: 12px; padding: 3px 9px; font-size: 8px; }
+    .nav-controls { gap: 10px; }
+    .nav-arrow { width: 40px; height: 40px; font-size: 15px; }
+    .dot-item { width: 10px; height: 2.5px; }
+    .dot-item.on { width: 22px; }
+    .progress-bar-wrap { bottom: 50px; left: 10%; right: 10%; }
+
+    .bignum { font-size: 60px; }
+    .bignum sub { font-size: 9px; top: -14px; margin-left: 6px; }
+    .studio-title { font-size: 28px; }
+    .studio-desc { font-size: 13px; line-height: 1.6; }
+    .studio-badge-tag { padding: 4px 11px; font-size: 8px; }
+    .studio-kicker { font-size: 9px; }
+    .studio-tech-stack { gap: 5px; }
+    .tech-pill { padding: 3px 8px; font-size: 8.5px; }
+    .studio-metrics-grid { gap: 6px; margin: 14px 0; }
+    .metric-card { padding: 8px 4px; border-radius: 12px; }
+    .metric-val { font-size: 16px; }
+    .metric-lbl { font-size: 7.5px; letter-spacing: .04em; }
+    .quick-pill { padding: 5px 11px; font-size: 10px; }
+    .browser-url { max-width: 130px; font-size: 7.5px; padding: 2.5px 8px; }
+    .browser-tag-badge { display: none; }
+    .mobile-island { width: 56px; height: 12px; }
+}
+
+/* Ultra Compact Devices (<= 360px) */
+@media(max-width: 360px) {
+    .studio-page { padding: 10px 10px 48px; gap: 18px; }
+    .stage { min-height: 310px; padding: 8px 0 70px; }
+    .scene { width: 200px; height: 200px; }
+    .pedestal-disk-outer { width: 185px; height: 22px; }
+    .bignum { font-size: 50px; }
+    .studio-title { font-size: 24px; }
+    .studio-desc { font-size: 12px; }
+    .metric-val { font-size: 14px; }
+    .metric-lbl { font-size: 6.8px; }
+    .browser-controls .dot { width: 6px; height: 6px; }
+    .browser-url { max-width: 100px; font-size: 7px; }
+    .status-clock { font-size: 8px; }
+    .mobile-island { width: 48px; height: 11px; }
+}
+</style>
 </head>
 <body>
 <!-- ════════════════════════════════════════════
@@ -1445,6 +1844,10 @@ footer.studio-footer span:last-child {
                     <span class="u"><span id="tB"><em>Jawebni</em></span></span>
                 </h1>
                 <div class="studio-desc" id="desc">جاوبني... باش تربح وقتك وزبناءك. منصة ذكية توفر الرد الفوري والدقيق للزبناء عبر الذكاء الاصطناعي.</div>
+                <!-- التقنيات المستخدمة في المشروع / التطبيق -->
+                <div class="studio-tech-stack" id="techStack"></div>
+                <!-- مؤشرات ومميزات المشروع بالأرقام -->
+                <div class="studio-metrics-grid" id="projectMetrics"></div>
                 <div class="studio-actions">
                     <button class="lux-btn" id="openBtn"><span id="openTxt">فتح المشروع</span> <span>↗</span></button>
                     <button class="lux-btn-ghost" id="copyBtn" title="Copy Link">⧉</button>
@@ -1456,6 +1859,8 @@ footer.studio-footer span:last-child {
                         <button data-f="apps" id="fApps">تطبيقات</button>
                     </div>
                 </div>
+                <!-- شريط التبديل السريع للمواقع والتطبيقات -->
+                <div class="studio-quick-strip" id="quickStrip"></div>
             </div>
             <div class="stage">
                 <div class="blob" id="blob"></div>
@@ -1471,7 +1876,45 @@ footer.studio-footer span:last-child {
                                 <div class="face-mat-corner fc-br"><span class="f-pin"></span></div>
                                 <div class="mat-reveal-line"></div>
                                 <div class="face-img-frame">
+                                    <div class="device-header" id="frontDeviceHeader">
+                                        <!-- Web Browser Frame Controls -->
+                                        <div class="device-bar-web">
+                                            <div class="browser-controls">
+                                                <span class="dot red" title="Close"></span>
+                                                <span class="dot yellow" title="Minimize"></span>
+                                                <span class="dot green" title="Maximize"></span>
+                                            </div>
+                                            <div class="browser-nav-btns">
+                                                <span class="nav-b-btn">‹</span>
+                                                <span class="nav-b-btn">›</span>
+                                            </div>
+                                            <div class="browser-url" id="frontBrowserUrl">
+                                                <i class="fa-solid fa-lock" title="SSL Secure"></i>
+                                                <span class="url-text">jawebni.ma</span>
+                                                <i class="fa-solid fa-rotate-right refresh-icon"></i>
+                                            </div>
+                                            <div class="browser-tag-badge">
+                                                <span class="badge-dot-live"></span>
+                                                <span class="badge-text">WEB</span>
+                                            </div>
+                                        </div>
+                                        <!-- Mobile App Frame Status Bar -->
+                                        <div class="device-bar-app">
+                                            <span class="status-clock">9:41</span>
+                                            <div class="mobile-island">
+                                                <span class="island-cam"></span>
+                                                <span class="island-pulse"></span>
+                                            </div>
+                                            <div class="status-signals">
+                                                <i class="fa-solid fa-signal"></i>
+                                                <span class="network-badge">5G</span>
+                                                <i class="fa-solid fa-wifi"></i>
+                                                <i class="fa-solid fa-battery-full"></i>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="face-img" id="frontImg"></div>
+                                    <div class="app-home-bar"></div>
                                     <div class="mat-inner-border"></div>
                                 </div>
                             </div>
@@ -1488,7 +1931,45 @@ footer.studio-footer span:last-child {
                                 <div class="face-mat-corner fc-br"><span class="f-pin"></span></div>
                                 <div class="mat-reveal-line"></div>
                                 <div class="face-img-frame">
+                                    <div class="device-header" id="backDeviceHeader">
+                                        <!-- Web Browser Frame Controls -->
+                                        <div class="device-bar-web">
+                                            <div class="browser-controls">
+                                                <span class="dot red" title="Close"></span>
+                                                <span class="dot yellow" title="Minimize"></span>
+                                                <span class="dot green" title="Maximize"></span>
+                                            </div>
+                                            <div class="browser-nav-btns">
+                                                <span class="nav-b-btn">‹</span>
+                                                <span class="nav-b-btn">›</span>
+                                            </div>
+                                            <div class="browser-url" id="backBrowserUrl">
+                                                <i class="fa-solid fa-lock" title="SSL Secure"></i>
+                                                <span class="url-text">hafiz-quran.vercel.app</span>
+                                                <i class="fa-solid fa-rotate-right refresh-icon"></i>
+                                            </div>
+                                            <div class="browser-tag-badge">
+                                                <span class="badge-dot-live"></span>
+                                                <span class="badge-text">APP</span>
+                                            </div>
+                                        </div>
+                                        <!-- Mobile App Frame Status Bar -->
+                                        <div class="device-bar-app">
+                                            <span class="status-clock">9:41</span>
+                                            <div class="mobile-island">
+                                                <span class="island-cam"></span>
+                                                <span class="island-pulse"></span>
+                                            </div>
+                                            <div class="status-signals">
+                                                <i class="fa-solid fa-signal"></i>
+                                                <span class="network-badge">5G</span>
+                                                <i class="fa-solid fa-wifi"></i>
+                                                <i class="fa-solid fa-battery-full"></i>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="face-img" id="backImg"></div>
+                                    <div class="app-home-bar"></div>
                                     <div class="mat-inner-border"></div>
                                 </div>
                             </div>
@@ -1547,20 +2028,46 @@ footer.studio-footer span:last-child {
             const WORKS = [
                 {
                     cat: "web",
+                    frameType: "web",
+                    urlDisplay: "jawebni.ma",
                     title: { ar: ["جاوبني", "ذكي"], fr: ["Jawebni", "Intelligent"], en: ["Jawebni", "Smart"] },
-                    type: { ar: "مساعد مبيعات ذكي — AI", fr: "Assistant de vente — IA", en: "AI Sales Assistant" },
-                    badge: { ar: "منصة ذكاء اصطناعي", fr: "Plateforme IA", en: "AI Sales Platform" },
-                    desc: { ar: "جاوبني... باش تربح وقتك وزبناءك. منصة ذكية توفر الرد الفوري والدقيق للزبناء عبر الذكاء الاصطناعي.", fr: "Jawebni... Gagnez du temps et vos clients. Réponse immédiate et précise par IA.", en: "Jawebni... Save time and win customers. Immediate and precise AI-driven responses." },
+                    type: { ar: "منصة ويب — مساعد مبيعات ذكي بالذكاء الاصطناعي", fr: "Plateforme Web — Vente IA", en: "Web Platform — AI Sales Assistant" },
+                    badge: { ar: "منصة ويب ذكية", fr: "Plateforme Web IA", en: "AI Web Platform" },
+                    openLabel: { ar: "زيارة موقع جاوبني", fr: "Visiter le site Jawebni", en: "Visit Jawebni Web" },
+                    desc: {
+                        ar: "جاوبني... باش تربح وقتك وزبناءك. منصة ذكية توفر الرد الفوري والدقيق للزبناء عبر الذكاء الاصطناعي على مدار الساعة مع زيادة ملحوظة في معدل التحويل.",
+                        fr: "Jawebni... Gagnez du temps et vos clients. Plateforme SaaS intelligente de réponse instantanée et conversion des ventes par IA.",
+                        en: "Jawebni... Save time and win customers. Intelligent AI sales assistant providing 24/7 instant client responses and higher conversion."
+                    },
+                    stack: ["Next.js", "OpenAI LLM", "TypeScript", "Tailwind CSS", "Supabase", "Vercel"],
+                    stats: [
+                        { val: "99.4%", label: { ar: "دقة الاستجابة", fr: "Précision IA", en: "AI Accuracy" } },
+                        { val: "24/7", label: { ar: "استجابة فورية", fr: "Disponibilité", en: "Instant Uptime" } },
+                        { val: "+10x", label: { ar: "تحويل المبيعات", fr: "Conversion", en: "Sales Boost" } }
+                    ],
                     img: "jawbni.jpg",
                     link: "https://jawebni.ma",
                     blob: ["rgba(0, 210, 255, 0.4)", "rgba(10, 108, 255, 0.3)"]
                 },
                 {
                     cat: "apps",
+                    frameType: "app",
+                    urlDisplay: "hafiz-quran.vercel.app",
                     title: { ar: ["حافظ", "القرآن"], fr: ["Hafiz", "Coran"], en: ["Hafiz", "Quran"] },
-                    type: { ar: "حفظ قرآن — Memorization", fr: "Mémorisation — Coran", en: "Quran Memorization" },
-                    badge: { ar: "تطبيق قرآني روحي", fr: "Application Spirituelle", en: "Quranic Ecosystem" },
-                    desc: { ar: "حافظ القرآن، التكنولوجيا في خدمة كتاب الله. واجهة روحانية لتسهيل الحفظ والمراجعة اليومية.", fr: "Hafiz, la technologie au service du Coran. Interface spirituelle pour faciliter la mémorisation.", en: "Hafiz, technology serving the Holy Quran. Spiritual interface for effortless memorization." },
+                    type: { ar: "تطبيق قرآني متكامل — Quran Memorization Ecosystem", fr: "Application Coranique — Mémorisation", en: "Quran App Ecosystem — Memorization" },
+                    badge: { ar: "تطبيق روحي متطور", fr: "Application Spirituelle", en: "Spiritual App Ecosystem" },
+                    openLabel: { ar: "فتح تطبيق حافظ القرآن", fr: "Ouvrir l'application Hafiz", en: "Launch Hafiz App" },
+                    desc: {
+                        ar: "حافظ القرآن، التكنولوجيا في خدمة كتاب الله. منظومة تطبيق حديثة لتسهيل الحفظ والمراجعة اليومية مع تتبع التقدم، تلاوات صوتية، وإحصاءات دقيقة.",
+                        fr: "Hafiz, la technologie au service du Coran. Écosystème d'application mobile et web pour faciliter l'apprentissage et le suivi quotidien.",
+                        en: "Hafiz, modern technology serving the Holy Quran. Complete app ecosystem for effortless memorization, daily tracking, and progress insights."
+                    },
+                    stack: ["React", "Audio Engine", "PWA Mobile", "Offline Sync", "IndexedDB", "Cloud"],
+                    stats: [
+                        { val: "60 حزباً", label: { ar: "المصحف كاملاً", fr: "Coran Complet", en: "Full Quran" } },
+                        { val: "100%", label: { ar: "بدون إعلانات", fr: "Sans Pub", en: "100% Ad-free" } },
+                        { val: "أوفلاين", label: { ar: "يعمل دون إنترنت", fr: "Mode Hors-ligne", en: "Offline Ready" } }
+                    ],
                     img: "HAFIZ.jpg",
                     link: "https://hafiz-quran-memorization-ecosystem.vercel.app/",
                     blob: ["rgba(198, 161, 91, 0.45)", "rgba(10, 108, 255, 0.25)"]
@@ -1568,9 +2075,9 @@ footer.studio-footer span:last-child {
             ];
 
             const UI = {
-                ar: { enter: "دخول المجموعة — Enter", count: "أعمال", avail: "متاح للعمل", all: "الكل", web: "مواقع", apps: "تطبيقات", open: "فتح المشروع", copied: "تم النسخ" },
-                fr: { enter: "Entrer dans la collection", count: "œuvres", avail: "Disponible", all: "Tous", web: "Sites", apps: "Apps", open: "Ouvrir le projet", copied: "Copié" },
-                en: { enter: "Enter Collection", count: "works", avail: "Available for work", all: "All", web: "Web", apps: "Apps", open: "Open project", copied: "Copied" }
+                ar: { enter: "دخول المجموعة — Enter", count: "أعمال مميزة", avail: "جاهز للمشاريع", all: "الكل", web: "مواقع الويب", apps: "تطبيقات ذكية", open: "فتح المشروع", copied: "تم النسخ بنجاح" },
+                fr: { enter: "Entrer dans la collection", count: "œuvres d'exception", avail: "Disponible pour projets", all: "Tous", web: "Sites Web", apps: "Applications", open: "Explorer le projet", copied: "Lien copié" },
+                en: { enter: "Enter Collection", count: "signature works", avail: "Available for projects", all: "All", web: "Websites", apps: "Mobile Apps", open: "Explore Project", copied: "Link copied" }
             };
 
             /* ===== الستارة السينمائية الفائقة (Curtain Wipe Transition) ===== */
@@ -1740,8 +2247,13 @@ footer.studio-footer span:last-child {
 
             function updateFilterLabels() {
                 const u = UI[lang];
-                $('#fAll').textContent = u.all; $('#fWeb').textContent = u.web; $('#fApps').textContent = u.apps;
-                $('#openTxt').textContent = u.open;
+                const webCount = WORKS.filter(w => w.cat === 'web').length;
+                const appCount = WORKS.filter(w => w.cat === 'apps').length;
+                $('#fAll').innerHTML = `${u.all} <span class="filter-count">(${WORKS.length})</span>`;
+                $('#fWeb').innerHTML = `${u.web} <span class="filter-count">(${webCount})</span>`;
+                $('#fApps').innerHTML = `${u.apps} <span class="filter-count">(${appCount})</span>`;
+                const curr = WORKS[currentProject];
+                $('#openTxt').textContent = (curr && curr.openLabel && curr.openLabel[lang]) ? curr.openLabel[lang] : u.open;
                 $('#hC').textContent = `${WORKS.length} ${u.count}`;
                 $('#hA').textContent = u.avail;
             }
@@ -1782,9 +2294,65 @@ footer.studio-footer span:last-child {
                 $('#tB').innerHTML = `<em>${titleB}</em>`;
                 $('#desc').textContent = descStr;
 
+                // شارة المشروع
                 const badgeEl = $('#badgeCat');
                 if (badgeEl && project.badge) {
                     badgeEl.textContent = project.badge[lang] || project.badge.ar;
+                }
+
+                // نص زر الفتح التفاعلي
+                const openTxtEl = $('#openTxt');
+                if (openTxtEl) {
+                    openTxtEl.textContent = (project.openLabel && project.openLabel[lang]) ? project.openLabel[lang] : UI[lang].open;
+                }
+
+                // بطاقات التقنيات المستخدمة (Tech Stack)
+                const stackContainer = $('#techStack');
+                if (stackContainer && project.stack) {
+                    stackContainer.innerHTML = project.stack.map(tech => 
+                        `<span class="tech-pill"><i class="fa-solid fa-code"></i> ${tech}</span>`
+                    ).join('');
+                }
+
+                // شبكة المؤشرات والمميزات الرقمية
+                const metricsContainer = $('#projectMetrics');
+                if (metricsContainer && project.stats) {
+                    metricsContainer.innerHTML = project.stats.map(s => {
+                        const lbl = s.label[lang] || s.label.ar;
+                        return `<div class="metric-card"><div class="metric-val">${s.val}</div><div class="metric-lbl">${lbl}</div></div>`;
+                    }).join('');
+                }
+
+                // شريط التبديل السريع للمشاريع
+                const stripContainer = $('#quickStrip');
+                if (stripContainer) {
+                    stripContainer.innerHTML = WORKS.map((w, i) => {
+                        const isActive = i === index ? ' active' : '';
+                        const icon = w.frameType === 'web' ? '<i class="fa-solid fa-globe"></i>' : '<i class="fa-solid fa-mobile-screen-button"></i>';
+                        const catName = w.frameType === 'web' ? (lang === 'ar' ? 'موقع' : 'Web') : (lang === 'ar' ? 'تطبيق' : 'App');
+                        const name = w.title[lang] ? w.title[lang][0] : w.title.ar[0];
+                        return `<button class="quick-pill${isActive}" type="button" data-idx="${i}">${icon} <span class="pill-cat">${catName}</span> <span class="pill-name">${name}</span></button>`;
+                    }).join('');
+                    stripContainer.querySelectorAll('.quick-pill').forEach(btn => {
+                        btn.addEventListener('click', () => {
+                            const targetIdx = parseInt(btn.dataset.idx, 10);
+                            if (targetIdx !== currentProject && !isFlipping) {
+                                stopAutoPlay();
+                                $('#cube').classList.remove('spin');
+                                performCubeFlip(targetIdx);
+                                startAutoPlay();
+                            }
+                        });
+                    });
+                }
+
+                // تحديث إطار الجهاز (متصفح ويب أم هاتف ذكي)
+                const faceFront = $('#faceFront');
+                if (faceFront) {
+                    faceFront.classList.remove('is-web', 'is-app');
+                    faceFront.classList.add(project.frameType === 'web' ? 'is-web' : 'is-app');
+                    const urlEl = faceFront.querySelector('.browser-url .url-text') || faceFront.querySelector('.browser-url span');
+                    if (urlEl && project.urlDisplay) urlEl.textContent = project.urlDisplay;
                 }
 
                 $('#big').textContent = String(index + 1).padStart(2, '0');
@@ -1809,6 +2377,14 @@ footer.studio-footer span:last-child {
                 const backBadge = $('#backBadge');
 
                 const next = WORKS[newIndex];
+
+                const faceBack = $('#faceBack');
+                if (faceBack) {
+                    faceBack.classList.remove('is-web', 'is-app');
+                    faceBack.classList.add(next.frameType === 'web' ? 'is-web' : 'is-app');
+                    const urlEl = faceBack.querySelector('.browser-url .url-text') || faceBack.querySelector('.browser-url span');
+                    if (urlEl && next.urlDisplay) urlEl.textContent = next.urlDisplay;
+                }
 
                 backImg.style.backgroundImage = `url("${next.img}")`;
                 backBadge.textContent = `${String(newIndex + 1).padStart(2,'0')} / ${String(WORKS.length).padStart(2,'0')}`;
@@ -1906,6 +2482,17 @@ footer.studio-footer span:last-child {
                 if (prevProjectGlobal !== currentProject) performCubeFlip(prevProjectGlobal);
                 startAutoPlay();
             }
+
+            // التنقل عبر لوحة المفاتيح
+            window.addEventListener('keydown', (e) => {
+                if ($('#main').classList.contains('ready')) {
+                    if (e.key === 'ArrowRight') {
+                        lang === 'ar' ? prevProject() : nextProject();
+                    } else if (e.key === 'ArrowLeft') {
+                        lang === 'ar' ? nextProject() : prevProject();
+                    }
+                }
+            });
 
             $('#next').addEventListener('click', nextProject);
             $('#prev').addEventListener('click', prevProject);
