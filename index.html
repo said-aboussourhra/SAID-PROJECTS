@@ -2209,46 +2209,8 @@ footer.studio-footer::before {
 
 /* ═══════════════════════════════════════════════════════
    29 — التنظيم الفاخر (Luxury Organization & Structure)
-   عدّاد مشاريع + شارة زمنية + تنظيم الشريط السريع
+   تنظيم الشريط السريع للمشاريع
 ═══════════════════════════════════════════════════════ */
-/* عدّاد المشاريع في الترويسة */
-.works-counter {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-family: "Space Grotesk", sans-serif; font-size: 10px;
-    font-weight: 800; letter-spacing: .16em; color: var(--ink-black);
-    background: rgba(255, 255, 255, .7);
-    border: 1px solid rgba(198, 161, 91, .3); border-radius: 999px;
-    padding: 5px 13px;
-    box-shadow: inset 0 1px 1px #fff, 0 4px 12px -4px rgba(10, 14, 28, .12);
-}
-.works-counter b { color: var(--accent-gold); font-size: 13px; }
-
-/* شارة زمنية في لوحة المعلومات */
-.studio-time-badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    margin-top: 14px; font-size: 9px; letter-spacing: .22em;
-    text-transform: uppercase; color: var(--ink-muted); font-weight: 700;
-    background: rgba(255, 255, 255, .6); border: 1px solid var(--line-light);
-    padding: 6px 14px; border-radius: 999px;
-    width: fit-content;
-    box-shadow: inset 0 1px 1px #fff;
-}
-.time-dot {
-    width: 6px; height: 6px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--accent-gold), var(--accent-blue));
-    box-shadow: 0 0 10px rgba(198, 161, 91, .8);
-    animation: timeDotPulse 2.4s ease-in-out infinite;
-}
-@keyframes timeDotPulse {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(.65); opacity: .5; }
-}
-@media (max-width: 768px) {
-    .works-counter { font-size: 9px; padding: 4px 10px; }
-    .studio-time-badge { margin: 10px auto 0; }
-}
-
-/* تنظيم الشريط السريع للمشاريع */
 .studio-quick-strip { align-items: stretch; }
 .quick-pill { justify-content: center; }
 </style>
@@ -2521,7 +2483,6 @@ footer.studio-footer::before {
                 <span id="hA">جاهز للمشاريع</span>
             </div>
             <div class="studio-nav-tools">
-                <span class="works-counter" id="worksCounter">02 <b>✦</b> WORKS</span>
                 <div class="studio-lang-picker" id="studioLangPicker">
                     <button type="button" class="lang-pill active" data-l="ar">العربية</button>
                     <button type="button" class="lang-pill" data-l="fr">FR</button>
@@ -2551,10 +2512,6 @@ footer.studio-footer::before {
                     <button class="lux-btn" id="openBtn"><span id="openTxt">فتح المشروع</span> <span>↗</span></button>
                     <button class="lux-btn-secondary" id="specsBtn" title="المواصفات التقنية والمعمارية"><i class="fa-solid fa-layer-group"></i> <span id="specsTxt">المعمارية</span></button>
                     <button class="lux-btn-ghost" id="copyBtn" title="Copy Link">⧉</button>
-                </div>
-                <div class="studio-time-badge" id="timeBadge">
-                    <span class="time-dot"></span>
-                    <span id="timeBadgeText">Casablanca · متاح الآن</span>
                 </div>
                 <div class="studio-filters-wrapper">
                     <div class="studio-filters">
@@ -2836,8 +2793,7 @@ footer.studio-footer::before {
                     copied: "تم النسخ بنجاح", specs: "المعمارية والمواصفات",
                     devAuto: "تلقائي", devWeb: "حاسوب", devApp: "هاتف",
                     secOverview: "نظرة عامة على المشروع", secArch: "المعمارية والتقنيات", secFeat: "أبرز الميزات والقدرات",
-                    footerCrafted: "صُنع بشغف في الدار البيضاء ✦",
-                    timeBadge: "الدار البيضاء · متاح الآن"
+                    footerCrafted: "صُنع بشغف في الدار البيضاء ✦"
                 },
                 fr: {
                     enter: "Entrer dans la collection", count: "œuvres d'exception", avail: "Disponible pour projets",
@@ -2845,8 +2801,7 @@ footer.studio-footer::before {
                     copied: "Lien copié", specs: "Architecture & Specs",
                     devAuto: "Auto", devWeb: "Desktop", devApp: "Mobile",
                     secOverview: "Vue d'ensemble", secArch: "Architecture & Stack", secFeat: "Fonctionnalités clés",
-                    footerCrafted: "Créé avec passion à Casablanca ✦",
-                    timeBadge: "Casablanca · Disponible"
+                    footerCrafted: "Créé avec passion à Casablanca ✦"
                 },
                 en: {
                     enter: "Enter Collection", count: "signature works", avail: "Available for projects",
@@ -2854,8 +2809,7 @@ footer.studio-footer::before {
                     copied: "Link copied", specs: "Specs & Architecture",
                     devAuto: "Auto", devWeb: "Desktop", devApp: "Mobile",
                     secOverview: "Project Overview", secArch: "Architecture & Stack", secFeat: "Key Features",
-                    footerCrafted: "Made with passion in Casablanca ✦",
-                    timeBadge: "Casablanca · Available now"
+                    footerCrafted: "Made with passion in Casablanca ✦"
                 }
             };
 
@@ -3035,8 +2989,6 @@ footer.studio-footer::before {
                 $('#openTxt').textContent = (curr && curr.openLabel && curr.openLabel[lang]) ? curr.openLabel[lang] : u.open;
                 $('#hC').textContent = `${WORKS.length} ${u.count}`;
                 $('#hA').textContent = u.avail;
-                const counter = $('#worksCounter');
-                if (counter) counter.innerHTML = `${String(WORKS.length).padStart(2, '0')} <b>✦</b> ${u.count.toUpperCase()}`;
             }
 
             function filteredProjects() {
@@ -3650,12 +3602,10 @@ footer.studio-footer::before {
                     if ($('#lblDevApp')) $('#lblDevApp').textContent = u.devApp;
                     if (window.refreshAmbientLabel) window.refreshAmbientLabel(l);
                 }
-                /* التذييل والشارة الزمنية */
+                /* التذييل */
                 if (u) {
                     const el = document.getElementById('footerCrafted');
                     if (el) el.textContent = u.footerCrafted;
-                    const tb = document.getElementById('timeBadgeText');
-                    if (tb) tb.textContent = u.timeBadge;
                 }
             };
 
