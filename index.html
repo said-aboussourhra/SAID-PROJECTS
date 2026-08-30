@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>SAID — Iconic Digital Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Fraunces:opsz,wght@9..144,200;9..144,400;9..144,700;9..144,900&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -52,7 +52,7 @@
    02 — RESET & BASE
 ═══════════════════════════════════════════════════════ */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; background: #FFFFFF; }
+html { scroll-behavior: smooth; background: #FFFFFF; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 
 body {
     background: #FFFFFF !important;
@@ -62,6 +62,8 @@ body {
     cursor: none;
     -webkit-font-smoothing: antialiased;
     min-height: 100vh;
+    min-height: 100svh;
+    overscroll-behavior-y: none;
 }
 
 @media (pointer: coarse) {
@@ -70,6 +72,7 @@ body {
 }
 
 button, a { font-family: inherit; }
+button { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
 button:focus-visible, a:focus-visible, [tabindex]:focus-visible {
     outline: 2px solid var(--accent-blue);
     outline-offset: 4px;
@@ -248,7 +251,7 @@ button:focus-visible, a:focus-visible, [tabindex]:focus-visible {
 @keyframes rotateOrbit { to { transform: rotate(360deg); } }
 
 .entry-container {
-    max-width: 1440px; width: 100%; min-height: 100svh;
+    max-width: 1440px; width: 100%; min-height: 100vh; min-height: 100svh;
     padding: clamp(24px, 4vw, 56px);
     display: flex; flex-direction: column; justify-content: space-between;
     position: relative; z-index: 3;
@@ -526,7 +529,7 @@ button:focus-visible, a:focus-visible, [tabindex]:focus-visible {
 }
 
 .path-container {
-    position: relative; z-index: 2; min-height: 100svh; max-width: 1440px; width: 100%;
+    position: relative; z-index: 2; min-height: 100vh; min-height: 100svh; max-width: 1440px; width: 100%;
     margin: auto; padding: clamp(24px, 4vw, 56px);
     display: flex; flex-direction: column; justify-content: space-between;
 }
@@ -709,7 +712,7 @@ button:focus-visible, a:focus-visible, [tabindex]:focus-visible {
    10 — SMOKE TRANSITION
 ═══════════════════════════════════════════════════════ */
 #smokeSignature {
-    position: fixed; inset: 0; z-index: 25000; min-height: 100svh;
+    position: fixed; inset: 0; z-index: 25000; min-height: 100vh; min-height: 100svh;
     background: #FFFFFF; display: grid; place-items: center; overflow: hidden;
     opacity: 0; visibility: hidden; pointer-events: none; transform: scale(1.04);
     transition: opacity 0.8s ease, transform 1.2s var(--ease-expo), visibility 0s linear 1s;
@@ -1526,17 +1529,6 @@ footer.studio-footer span:last-child {
     background: #FFFFFF; color: var(--ink-black);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
-.portfolio-nav-link {
-    display: inline-flex; align-items: center; gap: 6px;
-    padding: 6px 13px; border-radius: 999px;
-    background: rgba(10, 108, 255, 0.06); border: 1px solid rgba(10, 108, 255, 0.15);
-    color: var(--accent-blue); font-size: 9.5px; font-weight: 700; letter-spacing: .12em;
-    text-decoration: none; transition: all 0.25s var(--ease-spring);
-}
-.portfolio-nav-link:hover {
-    background: var(--accent-blue); color: #FFFFFF;
-    box-shadow: 0 4px 14px rgba(10, 108, 255, 0.25); transform: translateY(-1px);
-}
 
 .lux-btn-secondary {
     height: 52px; padding: 0 20px; border-radius: 999px;
@@ -1693,56 +1685,534 @@ footer.studio-footer span:last-child {
 }
 
 /* ═══════════════════════════════════════════════════════
-   24 — زر الموسيقى الهادئة العائم (Quiet Ambient Music)
+   25 — الجمالية الفائقة (Ultra-Luxury Aesthetic Layer)
+═══════════════════════════════════════════════════════ */
+::selection { background: rgba(198, 161, 91, 0.28); color: #11100F; }
+
+/* سكرول نحيف مذهّب */
+::-webkit-scrollbar { width: 9px; }
+::-webkit-scrollbar-track { background: #F7F4ED; }
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, rgba(198, 161, 91, 0.6), rgba(10, 108, 255, 0.35));
+    border-radius: 999px; border: 2px solid #F7F4ED;
+}
+::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #C6A15B, #0A6CFF); }
+
+/* شفافية الخلفيات لتمكين هالة الشفق من التنفس خلف الواجهات */
+#main { background: transparent; }
+#entry { background: rgba(255, 255, 255, 0.94); }
+#pathEntry { background: rgba(255, 255, 255, 0.96); }
+
+/* — هالة الألوان الشفقية القوية — */
+.aurora { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+.aurora-blob {
+    position: absolute; border-radius: 50%;
+    filter: blur(70px); will-change: transform;
+    animation: auroraDrift 46s var(--ease-silk) infinite alternate;
+}
+.aurora .a1 {
+    width: 68vw; height: 68vw; top: -16vw; inset-inline-start: -14vw;
+    background: radial-gradient(circle, rgba(10, 108, 255, 0.30) 0%, rgba(0, 210, 255, 0.12) 45%, transparent 70%);
+    animation-duration: 52s; animation-delay: -8s;
+}
+.aurora .a2 {
+    width: 62vw; height: 62vw; bottom: -18vw; inset-inline-end: -12vw;
+    background: radial-gradient(circle, rgba(198, 161, 91, 0.30) 0%, rgba(224, 179, 84, 0.12) 45%, transparent 70%);
+    animation-duration: 58s; animation-delay: -20s;
+}
+.aurora .a3 {
+    width: 52vw; height: 52vw; top: 24%; left: 44%;
+    background: radial-gradient(circle, rgba(214, 180, 255, 0.22) 0%, rgba(10, 108, 255, 0.10) 50%, transparent 72%);
+    animation-duration: 46s; animation-delay: -34s;
+}
+@keyframes auroraDrift {
+    0%   { transform: translate3d(0, 0, 0) scale(1);    opacity: 0.55; }
+    35%  { transform: translate3d(6vw, -3vh, 0) scale(1.15); opacity: 0.9; }
+    70%  { transform: translate3d(-5vw, 4vh, 0) scale(0.92); opacity: 0.7; }
+    100% { transform: translate3d(3vw, 2vh, 0) scale(1.1); opacity: 0.85; }
+}
+@media (max-width: 820px) {
+    .aurora-blob { filter: blur(50px); opacity: 0.55 !important; }
+    .aurora .a3 { display: none; }
+}
+
+/* — الشبكة الهندسية الإسلامية المنقوشة — */
+.lattice-overlay {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0.11;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%23C6A15B' stroke-width='1.2'%3E%3Cpath d='M60 0l14.6 14.6L60 29.2 45.4 14.6z'/%3E%3Cpath d='M120 60l-14.6 14.6L90.8 60l14.6-14.6z'/%3E%3Cpath d='M0 60l14.6 14.6L29.2 60 14.6 45.4z'/%3E%3Cpath d='M60 120l14.6-14.6L60 90.8 45.4 105.4z'/%3E%3Cpath d='M60 0L120 60 60 120 0 60z'/%3E%3Ccircle cx='60' cy='60' r='21'/%3E%3Ccircle cx='60' cy='60' r='4'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 120px 120px;
+    mask-image: radial-gradient(ellipse 75% 75% at 50% 42%, black 10%, transparent 78%);
+    -webkit-mask-image: radial-gradient(ellipse 75% 75% at 50% 42%, black 10%, transparent 78%);
+}
+
+/* — شرر ذهبي عائم متوهج — */
+.gold-dust { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+.gold-dust i {
+    position: absolute; width: 4px; height: 4px; border-radius: 50%;
+    background: radial-gradient(circle, #F5E3B3 0%, rgba(198, 161, 91, 0.6) 60%, transparent 100%);
+    box-shadow: 0 0 14px rgba(232, 200, 120, 0.9), 0 0 28px rgba(198, 161, 91, 0.5);
+    animation: dustFloat linear infinite; opacity: 0;
+}
+.gold-dust i:nth-child(1) { top: 18%; left: 12%; animation-duration: 22s; animation-delay: -2s; }
+.gold-dust i:nth-child(2) { top: 34%; left: 78%; animation-duration: 26s; animation-delay: -9s; width: 3px; height: 3px; }
+.gold-dust i:nth-child(3) { top: 62%; left: 22%; animation-duration: 24s; animation-delay: -15s; }
+.gold-dust i:nth-child(4) { top: 76%; left: 64%; animation-duration: 28s; animation-delay: -6s; width: 3.5px; height: 3.5px; }
+.gold-dust i:nth-child(5) { top: 10%; left: 55%; animation-duration: 23s; animation-delay: -20s; width: 3px; height: 3px; }
+.gold-dust i:nth-child(6) { top: 48%; left: 45%; animation-duration: 30s; animation-delay: -12s; width: 3.5px; height: 3.5px; }
+.gold-dust i:nth-child(7) { top: 82%; left: 30%; animation-duration: 25s; animation-delay: -4s; }
+.gold-dust i:nth-child(8) { top: 25%; left: 90%; animation-duration: 27s; animation-delay: -17s; width: 2.5px; height: 2.5px; }
+@keyframes dustFloat {
+    0%   { transform: translateY(12vh); opacity: 0; }
+    12%  { opacity: 1; }
+    50%  { transform: translateY(-38vh); opacity: 0.75; }
+    88%  { opacity: 0.9; }
+    100% { transform: translateY(-85vh); opacity: 0; }
+}
+@media (max-width: 820px) { .gold-dust i { width: 3px; height: 3px; box-shadow: 0 0 8px rgba(232, 200, 120, 0.7); } }
+
+/* — إطار المعرض: زوايا وجواهر مذهّبة — */
+.exhibition-corner { color: rgba(198, 161, 91, 0.55); }
+.exhibition-corner svg { stroke: rgba(198, 161, 91, 0.5); }
+.exhibition-corner::before {
+    content: ""; width: 5px; height: 5px; border-radius: 50%;
+    background: radial-gradient(circle, #F2D89A, #C6A15B);
+    box-shadow: 0 0 12px rgba(198, 161, 91, 0.8);
+    flex-shrink: 0;
+}
+.frame-line-top, .frame-line-bottom {
+    background: linear-gradient(90deg, transparent 0%, rgba(198, 161, 91, 0.16) 10%, rgba(10, 108, 255, 0.10) 50%, rgba(198, 161, 91, 0.16) 90%, transparent 100%);
+}
+.frame-line-left, .frame-line-right {
+    background: linear-gradient(180deg, transparent 0%, rgba(198, 161, 91, 0.16) 10%, rgba(10, 108, 255, 0.10) 50%, rgba(198, 161, 91, 0.16) 90%, transparent 100%);
+}
+
+/* — العلامة المائية: حبر مذهّب متوهج — */
+.watermark-text {
+    background: linear-gradient(135deg, #09090B 0%, #C6A15B 40%, #F5E3B3 55%, #0A6CFF 80%, #09090B 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    animation: goldShine 9s linear infinite;
+    filter: drop-shadow(0 0 40px rgba(198, 161, 91, 0.25));
+}
+
+/* — كينونة العناوين: رقائق ذهب متحركة — */
+.entry-title strong {
+    background: linear-gradient(120deg, #09090B 0%, #2B1E0A 22%, #C6A15B 38%, #F5E3B3 50%, #C6A15B 62%, #3A2A12 80%, #09090B 100%);
+    background-size: 300% auto;
+    animation: goldShine 7s linear infinite;
+}
+@keyframes goldShine { to { background-position: 300% center; } }
+.path-heading-title b {
+    background: linear-gradient(120deg, #121316 15%, #C6A15B 55%, #121316 90%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.studio-title .u:first-child span {
+    background: linear-gradient(120deg, #121316 20%, #C6A15B 55%, #121316 90%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.bignum {
+    background: linear-gradient(135deg, #09090B 20%, #3A3D46 55%, #C6A15B 92%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+/* — فواصل زخرفية (أورنامنت) — */
+.ornament-divider {
+    display: flex; align-items: center; justify-content: center; gap: 14px;
+    margin-top: 20px;
+}
+.ornament-divider i { width: 56px; height: 1px; }
+.ornament-divider i:first-child { background: linear-gradient(90deg, transparent, rgba(198, 161, 91, 0.8)); }
+.ornament-divider i:last-child { background: linear-gradient(90deg, rgba(198, 161, 91, 0.8), transparent); }
+.ornament-divider span {
+    font-size: 11px; color: var(--accent-gold);
+    text-shadow: 0 0 12px rgba(198, 161, 91, 0.7);
+    animation: ornamentPulse 4s ease-in-out infinite;
+}
+@keyframes ornamentPulse {
+    0%, 100% { opacity: 0.55; transform: rotate(0deg) scale(1); }
+    50% { opacity: 1; transform: rotate(90deg) scale(1.15); }
+}
+
+/* — الترويسات: لمسات ذهبية — */
+.entry-kicker { display: inline-flex; align-items: center; gap: 14px; }
+.entry-kicker::before, .entry-kicker::after {
+    content: ""; width: 34px; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(198, 161, 91, 0.7));
+}
+.entry-kicker::after { background: linear-gradient(90deg, rgba(198, 161, 91, 0.7), transparent); }
+.studio-kicker::before { content: "✦"; width: auto; height: auto; background: none; color: var(--accent-gold); font-size: 9px; }
+.studio-logo em { color: var(--accent-gold); }
+header.studio-header::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(198, 161, 91, 0.5) 30%, rgba(10, 108, 255, 0.3) 70%, transparent 100%);
+    pointer-events: none;
+}
+
+/* — الخطوط الفاصلة والشرائط — */
+.lux-line { background: linear-gradient(90deg, transparent, rgba(198, 161, 91, 0.25), transparent); }
+.lux-line i { background: linear-gradient(90deg, var(--accent-blue), var(--accent-gold), #F5E3B3); }
+.progress-bar-wrap i { background: linear-gradient(90deg, var(--accent-blue), var(--accent-gold), #F5E3B3); }
+.studio-filters button.on {
+    background: #FFFFFF;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07), 0 1px 3px rgba(0, 0, 0, 0.04), inset 0 0 0 1px rgba(198, 161, 91, 0.25);
+}
+
+/* — الأزرار — */
+.lux-btn:hover {
+    box-shadow: 0 14px 36px rgba(198, 161, 91, 0.28), 0 0 0 1.5px rgba(198, 161, 91, 0.4);
+}
+.lux-btn::after {
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.5), rgba(198, 161, 91, 0.25), transparent);
+}
+
+/* — إطار اللوحة الفنية: لمعان متحرك — */
+.face-outer-bezel {
+    background: linear-gradient(135deg, #FFFFFF 0%, rgba(10, 108, 255, 0.4) 30%, rgba(198, 161, 91, 0.55) 60%, #FFFFFF 100%);
+    background-size: 300% 300%;
+    animation: bezelSheen 9s ease-in-out infinite;
+}
+@keyframes bezelSheen {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+.gloss {
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.3) 22%, transparent 45%, rgba(198, 161, 91, 0.10) 70%, rgba(10, 108, 255, 0.05) 82%, transparent 100%);
+    background-size: 220% 220%;
+    animation: glossSweep 11s ease-in-out infinite;
+}
+@keyframes glossSweep {
+    0%, 100% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+}
+
+/* — نافذة المعمارية: برواز ذهبي — */
+.specs-modal-card {
+    border: 1.5px solid rgba(198, 161, 91, 0.35);
+    box-shadow: 0 40px 100px -20px rgba(10, 14, 28, 0.28), 0 0 0 1px rgba(255, 255, 255, 0.9) inset, 0 0 60px -20px rgba(198, 161, 91, 0.35);
+}
+
+/* ═══════════════════════════════════════════════════════
+   24 — زر الموسيقى الحماسية الهادئة الفاخرة (Calm Cinematic Music)
 ═══════════════════════════════════════════════════════ */
 #ambientMusicBtn {
-    position: fixed; bottom: 22px; inset-inline-end: 22px; z-index: 9990;
+    position: fixed; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); inset-inline-end: calc(24px + env(safe-area-inset-right, 0px)); z-index: 9990;
     display: inline-flex; align-items: center; gap: 10px;
-    padding: 8px 14px 8px 9px; border-radius: 999px;
-    background: rgba(255, 255, 255, 0.72);
-    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
-    border: 1px solid rgba(10, 10, 14, 0.09);
-    box-shadow: 0 10px 30px rgba(10, 14, 28, 0.10), inset 0 1px 1px #fff;
+    padding: 7px 15px 7px 8px; border-radius: 999px;
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
     cursor: pointer; color: var(--ink-secondary);
-    transition: all 0.3s var(--ease-spring);
-    opacity: 0.82;
+    transition: all 0.4s var(--ease-spring);
+    opacity: 0.92;
+    box-shadow: 0 12px 34px -8px rgba(10, 14, 28, 0.16), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+}
+#ambientMusicBtn::before {
+    content: ""; position: absolute; inset: -1px; border-radius: 999px; padding: 1.5px;
+    background: linear-gradient(135deg, rgba(198, 161, 91, 0.55), rgba(10, 108, 255, 0.35) 45%, rgba(198, 161, 91, 0.65));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor; mask-composite: exclude;
+    pointer-events: none; opacity: 0.85;
 }
 #ambientMusicBtn:hover {
-    opacity: 1; transform: translateY(-2px);
-    border-color: rgba(10, 108, 255, 0.3); color: var(--accent-blue);
+    opacity: 1; transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 16px 40px -10px rgba(198, 161, 91, 0.35), inset 0 1px 1px #fff;
 }
 .amb-disc {
-    width: 27px; height: 27px; border-radius: 50%;
-    display: grid; place-items: center; font-size: 10.5px;
-    background: linear-gradient(135deg, rgba(10, 108, 255, 0.10), rgba(10, 10, 14, 0.05));
-    box-shadow: inset 0 1px 1px #fff;
+    width: 30px; height: 30px; border-radius: 50%;
+    display: grid; place-items: center; font-size: 11px; color: #fff;
+    background: linear-gradient(135deg, #C6A15B, #8E6B2F 55%, #E0C079);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.6), 0 4px 10px -2px rgba(198, 161, 91, 0.5);
+    position: relative;
 }
-.amb-eq { display: flex; align-items: flex-end; gap: 2.5px; height: 15px; }
+.amb-disc::after {
+    content: ""; position: absolute; inset: 3px; border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+}
+.amb-eq { display: flex; align-items: flex-end; gap: 3px; height: 16px; }
 .amb-eq i {
     width: 3px; height: 4px; border-radius: 2px;
-    background: currentColor; opacity: 0.9;
+    background: linear-gradient(180deg, var(--accent-blue), var(--accent-gold));
+    opacity: 0.55;
     transition: height 0.3s ease;
 }
 #ambientMusicBtn.playing {
-    opacity: 1; color: var(--accent-blue);
-    border-color: rgba(10, 108, 255, 0.35);
-    box-shadow: 0 10px 30px rgba(10, 108, 255, 0.16), inset 0 1px 1px #fff;
+    opacity: 1;
+    box-shadow: 0 14px 42px -8px rgba(198, 161, 91, 0.4), inset 0 1px 1px #fff;
 }
 #ambientMusicBtn.playing .amb-eq i { animation: ambEq 1.15s ease-in-out infinite; }
 #ambientMusicBtn.playing .amb-eq i:nth-child(1) { animation-delay: 0s; }
 #ambientMusicBtn.playing .amb-eq i:nth-child(2) { animation-delay: 0.18s; }
 #ambientMusicBtn.playing .amb-eq i:nth-child(3) { animation-delay: 0.36s; }
 #ambientMusicBtn.playing .amb-eq i:nth-child(4) { animation-delay: 0.54s; }
-#ambientMusicBtn.playing .amb-disc i { animation: ambSpin 7s linear infinite; }
+#ambientMusicBtn.playing .amb-disc { animation: ambSpin 9s linear infinite; }
 @keyframes ambEq {
-    0%, 100% { height: 4px; }
-    50% { height: 15px; }
+    0%, 100% { height: 4px; opacity: 0.4; }
+    50% { height: 16px; opacity: 1; }
 }
 @keyframes ambSpin { to { transform: rotate(360deg); } }
 @media(max-width: 768px) {
-    #ambientMusicBtn { bottom: 16px; inset-inline-end: 16px; padding: 7px 12px 7px 8px; }
-    .amb-disc { width: 24px; height: 24px; font-size: 9.5px; }
+    #ambientMusicBtn { bottom: calc(14px + env(safe-area-inset-bottom, 0px)); inset-inline-end: calc(16px + env(safe-area-inset-right, 0px)); padding: 6px 13px 6px 7px; }
+    .amb-disc { width: 27px; height: 27px; font-size: 10px; }
 }
+
+/* ═══════════════════════════════════════════════════════
+   26 — التلميع الشامل للتوافق مع جميع الأجهزة
+   (Universal Device Polish — كل الشاشات)
+═══════════════════════════════════════════════════════ */
+/* ── الوضع الأفقي للهواتف والشاشات القصيرة (Landscape) ── */
+@media (orientation: landscape) and (max-height: 600px) {
+    body { overflow-y: auto; }
+    /* الواجهة الأولى: اختيار اللغة */
+    .entry-container { padding: 12px 22px; min-height: 100vh; min-height: 100svh; gap: 6px; }
+    .entry-header { margin: 4vh auto 8px; }
+    .entry-kicker { font-size: 8.5px; margin-bottom: 6px; }
+    .entry-title { font-size: clamp(26px, 5.5vh, 40px); }
+    .entry-subtitle { font-size: 14px; margin-top: 6px; }
+    .language-cards-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; max-width: 860px; margin-bottom: 10px; }
+    .language-card-item { min-height: 84px; padding: 10px 14px; border-radius: 16px; }
+    .card-symbol-capsule { width: 42px; height: 42px; margin: 0; }
+    .card-symbol { font-size: 22px; }
+    .card-native, .card-edition-label, .card-index-chip, .card-deco-line { display: none; }
+    .card-name { font-size: 15px; }
+    .card-arrow-disc { width: 30px; height: 30px; font-size: 12px; }
+    .top-bar, .bottom-bar { font-size: 8px; }
+    /* الواجهة الثانية: اختيار المسار */
+    .path-container { padding: 12px 22px; min-height: 100vh; min-height: 100svh; }
+    .path-heading-title { font-size: 30px; margin-top: 4px; }
+    .path-heading-sub { font-size: 15px; margin-top: 6px; }
+    .path-cards-grid { grid-template-columns: 1fr 1fr; gap: 12px; max-width: 900px; margin-bottom: 10px; }
+    .path-choice-card { min-height: 140px; padding: 14px 18px; border-radius: 18px; }
+    .path-icon-capsule { width: 46px; height: 46px; margin: 6px 0; border-radius: 16px; }
+    .path-choice-icon { font-size: 24px; }
+    .path-choice-info h3 { font-size: 24px; }
+    .path-choice-info p { font-size: 12px; }
+    .path-circle-action { width: 36px; height: 36px; font-size: 14px; }
+    /* الواجهة الرئيسية */
+    header.studio-header { padding: 10px 16px; }
+    .studio-page { padding: 10px 16px 50px; gap: 14px; min-height: auto; align-items: start; }
+    .stage { order: -1; height: 280px; min-height: 0; padding: 4px 0 52px; }
+    .scene { width: 200px; height: 200px; animation: none; }
+    .blob { width: 230px; height: 230px; filter: blur(20px); }
+    .studio-info { text-align: center; padding: 0; }
+    .studio-badge-tag { margin: 0 auto 8px; padding: 3px 10px; font-size: 7.5px; }
+    .num-row { justify-content: center; }
+    .bignum { font-size: 38px; }
+    .bignum sub { top: -8px; font-size: 8px; margin-left: 4px; }
+    .lux-line { margin: 10px 0; }
+    .studio-kicker { justify-content: center; font-size: 8.5px; gap: 8px; }
+    .studio-title { font-size: clamp(20px, 5vh, 28px); margin-top: 6px; }
+    .studio-desc { font-size: 11.5px; line-height: 1.55; margin: 8px auto 0; max-width: 70ch; }
+    .studio-actions { margin-top: 10px; gap: 8px; justify-content: center; }
+    .lux-btn { height: 38px; padding: 0 16px; font-size: 9px; gap: 8px; }
+    .lux-btn-secondary { height: 38px; padding: 0 12px; font-size: 9px; gap: 5px; }
+    .lux-btn-ghost { width: 38px; height: 38px; font-size: 13px; }
+    .studio-filters-wrapper { margin-top: 10px; padding-top: 8px; }
+    .studio-filters button { padding: 4px 12px; font-size: 10px; }
+    .studio-quick-strip { display: none; }
+    .stage-device-switch { top: 0; }
+    .dev-switch-btn { padding: 3px 8px; font-size: 8.5px; }
+    .progress-bar-wrap { bottom: 42px; left: 18%; right: 18%; }
+    .nav-controls { bottom: -2px; gap: 10px; }
+    .nav-arrow { width: 34px; height: 34px; font-size: 13px; }
+    .dot-item { width: 9px; height: 2px; }
+    .dot-item.on { width: 20px; }
+    footer.studio-footer { padding: 8px 16px; font-size: 7.5px; }
+    .exhibition-frame { display: none; }
+    .drag-indicator { display: none; }
+}
+
+/* ── الهواتف الصغيرة جداً (أقل من 380px) ── */
+@media (max-width: 380px) {
+    header.studio-header { padding: 10px 12px; gap: 8px; }
+    .studio-logo { font-size: 17px; }
+    .header-meta { display: none; }
+    .studio-lang-picker .lang-pill { padding: 3px 7px; font-size: 8.5px; }
+    .studio-nav-tools { gap: 8px; }
+    .lang-orbit { display: none; }
+}
+
+/* ── الشاشات المتوسطة (أخفاء عناصر الترويسة الثانوية) ── */
+@media (max-width: 600px) {
+    .header-meta { display: none; }
+}
+
+/* ── الشاشات الكبيرة جداً (4K / Ultra-wide) ── */
+@media (min-width: 1920px) {
+    .studio-page { max-width: 1800px; padding: 0 64px; }
+    .bignum { font-size: 152px; }
+    .studio-title { font-size: clamp(44px, 4vw, 78px); }
+    .studio-desc { font-size: 16px; max-width: 46ch; }
+    .scene { width: 420px; height: 420px; }
+    .stage { height: 700px; }
+    .language-cards-grid { max-width: 1320px; }
+    .path-cards-grid { max-width: 1280px; }
+}
+
+/* ── منع مشاكل الفائض في الوضع الأفقي للوحات ── */
+@media (orientation: landscape) and (min-width: 700px) and (max-width: 1024px) {
+    .studio-page { min-height: auto; padding: 24px 28px 70px; gap: 28px; }
+    .stage { height: 480px; }
+    .scene { width: 290px; height: 290px; }
+}
+
+/* ═══════════════════════════════════════════════════════
+   27 — الهيكلة البسيطة الفاخرة (Refined Minimal Structure)
+   تذييل أنيق مضغوط + تكيّف تام مع جميع الشاشات
+═══════════════════════════════════════════════════════ */
+footer.studio-footer {
+    position: relative; max-width: 1600px; margin: 0 auto;
+    padding: 16px 32px 18px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 8px 18px;
+    letter-spacing: .14em; text-transform: uppercase;
+    color: var(--ink-muted); font-weight: 600;
+    border-top: none;
+}
+footer.studio-footer::before {
+    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(198, 161, 91, .45) 30%, rgba(10, 108, 255, .25) 70%, transparent 100%);
+}
+.footer-line { font-size: 8.5px; letter-spacing: .24em; color: var(--ink-muted); }
+.footer-line .gold { color: var(--accent-gold); }
+.footer-line:last-child {
+    font-family: "Instrument Serif", serif; font-style: italic; text-transform: none;
+    letter-spacing: .04em; font-size: 13px; color: var(--ink-secondary);
+}
+@media (max-width: 768px) {
+    footer.studio-footer { padding: 14px 18px 16px; flex-direction: column; align-items: center; text-align: center; gap: 6px; }
+    .footer-line { font-size: 7.5px; }
+    .footer-line:last-child { font-size: 12px; }
+}
+
+/* تكيّف تام: تقليص العناصر الكبيرة على الشاشات الصغيرة */
+@media (max-width: 768px) {
+    .watermark-text { font-size: 64vw; }
+    .entry-title { font-size: clamp(34px, 10vw, 52px); }
+    .language-cards-grid { max-width: 460px; }
+    .language-card-item { min-height: 128px; padding: 18px; border-radius: 22px; }
+    .card-symbol-capsule { width: 60px; height: 60px; margin: 4px 0; }
+    .card-symbol { font-size: 30px; }
+    .path-heading-title { font-size: clamp(30px, 8vw, 44px); }
+    .path-choice-card { min-height: 210px; padding: 22px; border-radius: 24px; }
+    .studio-title { font-size: clamp(24px, 6vw, 34px); }
+    .bignum { font-size: clamp(42px, 13vw, 64px); }
+    .studio-desc { font-size: 13px; max-width: 44ch; }
+    .lux-btn { height: 44px; padding: 0 22px; font-size: 10px; }
+    .lux-btn-secondary { height: 44px; padding: 0 14px; font-size: 10px; }
+    .lux-btn-ghost { width: 44px; height: 44px; }
+    .scene { width: min(250px, 64vw); height: min(250px, 64vw); }
+    .blob { width: min(300px, 78vw); height: min(300px, 78vw); filter: blur(24px); }
+    .nav-arrow { width: 38px; height: 38px; }
+    .drag-indicator { display: none; }
+}
+@media (max-width: 480px) {
+    .bignum { font-size: clamp(32px, 11vw, 46px); }
+    .studio-title { font-size: clamp(20px, 5.6vw, 27px); }
+    .studio-kicker { font-size: 8.5px; }
+    .studio-actions { flex-wrap: wrap; gap: 8px; }
+    .scene { width: min(220px, 62vw); height: min(220px, 62vw); }
+    .nav-controls { gap: 10px; }
+    .lang-orbit { width: 70vw; }
+}
+
+/* ═══════════════════════════════════════════════════════
+   28 — الجمالية القوية (Power-Luxury Visual Effects)
+   توهج مخروطي خلف المكعب + شعاع ضوئي مارّ + توهجات نصية
+═══════════════════════════════════════════════════════ */
+/* توهج مخروطي متحرك خلف منصة العرض */
+.stage-glow {
+    position: absolute; width: 720px; height: 720px; border-radius: 50%;
+    left: 50%; top: 50%; transform: translate(-50%, -50%);
+    background: conic-gradient(from 0deg,
+        rgba(10, 108, 255, 0.10), rgba(198, 161, 91, 0.16), rgba(0, 210, 255, 0.10),
+        rgba(214, 180, 255, 0.10), rgba(10, 108, 255, 0.10));
+    filter: blur(70px);
+    animation: stageGlowSpin 18s linear infinite;
+    pointer-events: none; z-index: 0;
+}
+@keyframes stageGlowSpin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+
+/* شعاع ضوئي مارّ عبر الشاشة */
+.beam-sweep {
+    position: fixed; top: -20%; bottom: -20%; width: 34vw; z-index: 1;
+    background: linear-gradient(100deg, transparent 0%, rgba(255,255,255,0.06) 40%, rgba(198,161,91,0.08) 50%, rgba(10,108,255,0.05) 60%, transparent 100%);
+    transform: skewX(-18deg);
+    animation: beamSweep 11s ease-in-out infinite;
+    pointer-events: none;
+}
+@keyframes beamSweep {
+    0%   { left: -45vw; opacity: 0; }
+    15%  { opacity: 1; }
+    55%  { left: 115vw; opacity: 1; }
+    70%  { left: 115vw; opacity: 0; }
+    100% { left: 115vw; opacity: 0; }
+}
+
+/* توهج نصي للعناوين الرئيسية */
+.entry-title, .path-heading-title, .studio-title {
+    filter: drop-shadow(0 0 22px rgba(198, 161, 91, 0.18));
+}
+
+/* توهج أقوى للأزرار الأساسية */
+.lux-btn {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14), 0 0 0 1px rgba(198, 161, 91, 0.35), 0 0 30px -6px rgba(198, 161, 91, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.25);
+}
+.lux-btn:hover {
+    box-shadow: 0 14px 40px -6px rgba(198, 161, 91, 0.5), 0 0 0 1.5px rgba(198, 161, 91, 0.55), 0 0 46px -8px rgba(10, 108, 255, 0.35);
+}
+
+/* بطاقات اللغة والمسار: توهج حدودي أقوى عند التحويم */
+.language-card-item:hover::before, .language-card-item.active::before,
+.path-choice-card:hover::before { opacity: 1; animation-duration: 3.5s; }
+
+/* بريق الزوايا المذهّبة للوحات */
+.face-mat-corner.fc-tl, .face-mat-corner.fc-tr,
+.face-mat-corner.fc-bl, .face-mat-corner.fc-br {
+    filter: drop-shadow(0 0 6px rgba(232, 200, 120, 0.8));
+}
+
+/* توهج خلفي للمكعب والبطاقات */
+.face { box-shadow: 0 35px 90px -15px rgba(0, 0, 0, 0.14), 0 0 0 1px rgba(255, 255, 255, 1) inset, 0 0 60px -18px rgba(198, 161, 91, 0.4); }
+
+/* لمعة عائمة على البطاقات */
+.language-card-item .card-symbol-capsule,
+.path-icon-capsule {
+    position: relative; overflow: hidden;
+}
+.language-card-item .card-symbol-capsule::after,
+.path-icon-capsule::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.55) 50%, transparent 70%);
+    transform: translateX(-120%);
+    transition: transform 0.9s var(--ease-silk);
+    pointer-events: none;
+}
+.language-card-item:hover .card-symbol-capsule::after,
+.language-card-item.active .card-symbol-capsule::after,
+.path-choice-card:hover .path-icon-capsule::after { transform: translateX(120%); }
+
+/* الصورة داخل اللوحة: لمعة ذهبية عند التحويم */
+.face:hover { box-shadow: 0 40px 100px -18px rgba(0, 0, 0, 0.2), 0 0 80px -16px rgba(198, 161, 91, 0.55); }
+
+/* نبض خفيف للشعار */
+.studio-logo { animation: logoBreathe 5s ease-in-out infinite; }
+@keyframes logoBreathe {
+    0%, 100% { text-shadow: 0 0 12px rgba(198, 161, 91, 0.0); }
+    50% { text-shadow: 0 0 18px rgba(198, 161, 91, 0.45); }
+}
+
+/* خفّة الأداء على الشاشات الصغيرة */
+@media (max-width: 768px) {
+    .stage-glow { width: 420px; height: 420px; filter: blur(46px); animation-duration: 24s; }
+    .beam-sweep { animation-duration: 16s; }
+    .aurora-blob { filter: blur(44px); }
+}
+
+/* ═══════════════════════════════════════════════════════
+   29 — التنظيم الفاخر (Luxury Organization & Structure)
+   تنظيم الشريط السريع للمشاريع
+═══════════════════════════════════════════════════════ */
+.studio-quick-strip { align-items: stretch; }
+.quick-pill { justify-content: center; }
 </style>
 </head>
 <body>
@@ -1785,6 +2255,16 @@ footer.studio-footer span:last-child {
     <div class="watermark-text">SAID</div>
     <div class="grain-layer" aria-hidden="true"></div>
     <div class="light-field" id="lightField"></div>
+    <div class="beam-sweep" aria-hidden="true"></div>
+
+    <!-- الجمالية الفائقة: هالة شفقية + نقش هندسي إسلامي + شرر ذهبي -->
+    <div class="aurora" aria-hidden="true">
+        <div class="aurora-blob a1"></div>
+        <div class="aurora-blob a2"></div>
+        <div class="aurora-blob a3"></div>
+    </div>
+    <div class="lattice-overlay" aria-hidden="true"></div>
+    <div class="gold-dust" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
 
     <!-- جزيئات الخلفية الحية -->
     <canvas id="particleCanvas"></canvas>
@@ -1812,6 +2292,7 @@ footer.studio-footer span:last-child {
             <div class="entry-header">
                 <span class="entry-kicker">WELCOME / BIENVENUE / أهلاً</span>
                 <h1 class="entry-title">اختر <strong>لغتك</strong></h1>
+                <div class="ornament-divider" aria-hidden="true"><i></i><span>✦</span><i></i></div>
                 <p class="entry-subtitle">Choose your language · Choisissez votre langue</p>
             </div>
             <div class="language-cards-grid" id="languageCards">
@@ -1920,6 +2401,7 @@ footer.studio-footer span:last-child {
             <div class="path-header">
                 <span class="path-kicker">YOUR NEXT STEP</span>
                 <h2 class="path-heading-title" id="pathTitle">اختر <b>مسارك</b></h2>
+                <div class="ornament-divider" aria-hidden="true"><i></i><span>✦</span><i></i></div>
                 <p class="path-heading-sub" id="pathSubtitle">ماذا تريد أن تستكشف؟</p>
             </div>
             <div class="path-cards-grid">
@@ -2006,9 +2488,6 @@ footer.studio-footer span:last-child {
                     <button type="button" class="lang-pill" data-l="fr">FR</button>
                     <button type="button" class="lang-pill" data-l="en">EN</button>
                 </div>
-                <a href="H.html" class="portfolio-nav-link" title="Paper Portfolio">
-                    <i class="fa-solid fa-file-lines"></i> <span id="portfolioNavLink">PORTFOLIO</span>
-                </a>
             </div>
         </header>
         <div class="studio-page">
@@ -2045,6 +2524,7 @@ footer.studio-footer span:last-child {
                 <div class="studio-quick-strip" id="quickStrip"></div>
             </div>
             <div class="stage">
+                <div class="stage-glow" aria-hidden="true"></div>
                 <div class="stage-device-switch" id="stageDeviceSwitch">
                     <button class="dev-switch-btn active" data-dev="auto" id="btnDevAuto" title="Adaptive View">
                         <i class="fa-solid fa-wand-magic-sparkles"></i> <span id="lblDevAuto">تلقائي</span>
@@ -2187,9 +2667,10 @@ footer.studio-footer span:last-child {
                 </div>
             </div>
         </div>
+
         <footer class="studio-footer">
-            <span>عرض المشاريع المميزة — Displaying iconic works</span>
-            <span>SAID © 2026 — Quiet Works</span>
+            <span class="footer-line">SAID © 2026 — Quiet Works</span>
+            <span class="footer-line" id="footerCrafted">صُنع بشغف في <span class="gold">الدار البيضاء</span> ✦</span>
         </footer>
     </div>
 
@@ -2311,21 +2792,24 @@ footer.studio-footer span:last-child {
                     all: "الكل", web: "مواقع الويب", apps: "تطبيقات ذكية", open: "فتح المشروع",
                     copied: "تم النسخ بنجاح", specs: "المعمارية والمواصفات",
                     devAuto: "تلقائي", devWeb: "حاسوب", devApp: "هاتف",
-                    secOverview: "نظرة عامة على المشروع", secArch: "المعمارية والتقنيات", secFeat: "أبرز الميزات والقدرات"
+                    secOverview: "نظرة عامة على المشروع", secArch: "المعمارية والتقنيات", secFeat: "أبرز الميزات والقدرات",
+                    footerCrafted: "صُنع بشغف في الدار البيضاء ✦"
                 },
                 fr: {
                     enter: "Entrer dans la collection", count: "œuvres d'exception", avail: "Disponible pour projets",
                     all: "Tous", web: "Sites Web", apps: "Applications", open: "Explorer le projet",
                     copied: "Lien copié", specs: "Architecture & Specs",
                     devAuto: "Auto", devWeb: "Desktop", devApp: "Mobile",
-                    secOverview: "Vue d'ensemble", secArch: "Architecture & Stack", secFeat: "Fonctionnalités clés"
+                    secOverview: "Vue d'ensemble", secArch: "Architecture & Stack", secFeat: "Fonctionnalités clés",
+                    footerCrafted: "Créé avec passion à Casablanca ✦"
                 },
                 en: {
                     enter: "Enter Collection", count: "signature works", avail: "Available for projects",
                     all: "All", web: "Websites", apps: "Mobile Apps", open: "Explore Project",
                     copied: "Link copied", specs: "Specs & Architecture",
                     devAuto: "Auto", devWeb: "Desktop", devApp: "Mobile",
-                    secOverview: "Project Overview", secArch: "Architecture & Stack", secFeat: "Key Features"
+                    secOverview: "Project Overview", secArch: "Architecture & Stack", secFeat: "Key Features",
+                    footerCrafted: "Made with passion in Casablanca ✦"
                 }
             };
 
@@ -2764,6 +3248,7 @@ footer.studio-footer span:last-child {
                     if (!isInteracting && !isFlipping) nextProject();
                 }, 5200);
             }
+            /* كشف أنيق لعناصر المعرض السفلية عند الوصول */
             function stopAutoPlay() {
                 if (autoPlayTimer) { clearInterval(autoPlayTimer); autoPlayTimer = null; }
             }
@@ -3117,6 +3602,11 @@ footer.studio-footer span:last-child {
                     if ($('#lblDevApp')) $('#lblDevApp').textContent = u.devApp;
                     if (window.refreshAmbientLabel) window.refreshAmbientLabel(l);
                 }
+                /* التذييل */
+                if (u) {
+                    const el = document.getElementById('footerCrafted');
+                    if (el) el.textContent = u.footerCrafted;
+                }
             };
 
             /* ===== الدخول المباشر إلى الاستوديو عبر Hash الرابط ===== */
@@ -3139,85 +3629,277 @@ footer.studio-footer span:last-child {
             buildProject(0);
 
             /* ═══════════════════════════════════════════════════════
-               الموسيقى الهادئة — محرك موسيقى توليدية محيطية
-               (Generative Quiet Ambient Music — Web Audio API)
-               لا ملفات صوتية خارجية: تُولَّد النغمات محلياً بهدوء
-               وتنطلق تلقائياً مع أول تفاعل من الزائر (سياسة المتصفحات)
+               الموسيقى الحماسية الهادئة — محرك موسيقى توليدية سينمائية
+               (Hamassia Hadi'a — Calm & Cinematic Generative Music)
+               وسائد وترية دافئة + انتفاخ سينمائي + باس ناعم + كاليمبا
+               + أجراس بعيدة + لحن عاطفي بطيء + ضاغط صوتي ماسترينغ
+               لا ملفات خارجية: كل شيء يُولَّد محلياً بأقوى حضور وأهدأ روح
             ═══════════════════════════════════════════════════════ */
             const AmbientMusic = (() => {
                 const KEY = 'saidAmbientMusic';
-                const CHORDS = [                      // تتابع أكوردات هادئة (Am9 → Fmaj9 → Cmaj7 → Gadd9)
-                    [45, 52, 60, 64, 71],
-                    [41, 48, 57, 60, 69],
-                    [36, 43, 55, 59, 64],
-                    [38, 45, 55, 62, 66]
+
+                /* تتابع أكوردات حالمة حماسية هادئة: Am9 → Fmaj9 → Cmaj9 → G6/9
+                   bass = جذر ناعم، pad = وسادة وترية، swell = انتفاخ سينمائي
+                   pluck = كاليمبا، bell = أجراس بعيدة، mel = لحن عاطفي بطيء */
+                const CHORDS = [
+                    { bass: 45, pad: [57, 60, 64, 67, 71], pluck: [69, 72, 76, 81], bell: [76, 79, 81, 84, 88], mel: [72, 76, 79, 76, 72, 79, 81] },
+                    { bass: 41, pad: [53, 57, 60, 64, 67], pluck: [65, 69, 72, 77], bell: [77, 81, 84, 88, 89], mel: [69, 72, 77, 72, 69, 77, 81] },
+                    { bass: 36, pad: [48, 60, 62, 64, 71], pluck: [64, 67, 72, 76], bell: [72, 76, 79, 81, 84, 88], mel: [72, 76, 79, 76, 72, 76, 79] },
+                    { bass: 43, pad: [55, 59, 62, 64, 69], pluck: [67, 71, 74, 79], bell: [74, 79, 81, 84, 86, 91], mel: [71, 74, 79, 74, 71, 79, 83] }
                 ];
                 const noteFreq = n => 440 * Math.pow(2, (n - 69) / 12);
-                let ctx = null, master = null, chordTimer = null, chordIdx = 0, playing = false;
-                let voices = [];
+
+                let ctx = null, master = null, comp = null;
+                let chordTimer = null, bellTimer = null, pluckTimer = null, melTimer = null, swellTimer = null;
+                let chordIdx = 0, melIdx = 0, playing = false;
+                let live = [];
+
+                function track(node) { live.push(node); return node; }
+                function stopper() {
+                    const dying = live; live = [];
+                    setTimeout(() => {
+                        dying.forEach(n => {
+                            try { n.stop ? n.stop() : n.disconnect(); } catch (e) {}
+                        });
+                    }, 4200);
+                }
 
                 function ensureCtx() {
                     if (ctx) return;
                     const AC = window.AudioContext || window.webkitAudioContext;
                     ctx = new AC();
+
                     master = ctx.createGain();
                     master.gain.value = 0;
 
-                    // مرشح الهواء الدافئ
+                    /* مرشح الهواء الدافئ — أفتح قليلاً لحضور أوضح */
                     const air = ctx.createBiquadFilter();
-                    air.type = 'lowpass'; air.frequency.value = 1500; air.Q.value = 0.4;
+                    air.type = 'lowpass'; air.frequency.value = 1650; air.Q.value = 0.4;
 
-                    // صدى فضائي ناعم جداً
-                    const delay = ctx.createDelay(1.5); delay.delayTime.value = 0.46;
-                    const fb = ctx.createGain(); fb.gain.value = 0.32;
-                    const damp = ctx.createBiquadFilter(); damp.type = 'lowpass'; damp.frequency.value = 1000;
-                    const wet = ctx.createGain(); wet.gain.value = 0.3;
+                    /* ضاغط صوتي لتماسك وامتلاء أعلى (ماسترينغ) */
+                    comp = ctx.createDynamicsCompressor();
+                    comp.threshold.value = -16;
+                    comp.knee.value = 14;
+                    comp.ratio.value = 3.2;
+                    comp.attack.value = 0.02;
+                    comp.release.value = 0.35;
 
-                    master.connect(air);
-                    air.connect(ctx.destination);
-                    air.connect(delay); delay.connect(damp);
-                    damp.connect(fb); fb.connect(delay);
-                    damp.connect(wet); wet.connect(ctx.destination);
+                    /* تنفّس بطيء للمدّ والجزر */
+                    const breath = ctx.createGain(); breath.gain.value = 1;
+                    const breathLfo = ctx.createOscillator(); breathLfo.frequency.value = 0.05;
+                    const breathAmt = ctx.createGain(); breathAmt.gain.value = 0.04;
+                    breathLfo.connect(breathAmt); breathAmt.connect(breath.gain); breathLfo.start();
+                    track(breathLfo); track(breathAmt);
 
-                    // تنفّس بطيء للفلتر (حركة حية)
-                    const lfo = ctx.createOscillator(); lfo.frequency.value = 0.05;
-                    const lfoGain = ctx.createGain(); lfoGain.gain.value = 400;
-                    lfo.connect(lfoGain); lfoGain.connect(air.frequency); lfo.start();
+                    /* لمعان الفلتر البطيء */
+                    const airLfo = ctx.createOscillator(); airLfo.frequency.value = 0.04;
+                    const airAmt = ctx.createGain(); airAmt.gain.value = 420;
+                    airLfo.connect(airAmt); airAmt.connect(air.frequency); airLfo.start();
+                    track(airLfo); track(airAmt);
+
+                    master.connect(breath); breath.connect(air); air.connect(comp); comp.connect(ctx.destination);
+
+                    /* صدى بينغ-بونغ فسيح (يمين ↔ يسار) */
+                    const dL = ctx.createDelay(2); dL.delayTime.value = 0.42;
+                    const dR = ctx.createDelay(2); dR.delayTime.value = 0.63;
+                    const dampL = ctx.createBiquadFilter(); dampL.type = 'lowpass'; dampL.frequency.value = 1100;
+                    const dampR = ctx.createBiquadFilter(); dampR.type = 'lowpass'; dampR.frequency.value = 1100;
+                    const fbL = ctx.createGain(); fbL.gain.value = 0.38;
+                    const fbR = ctx.createGain(); fbR.gain.value = 0.38;
+                    const wetL = ctx.createGain(); wetL.gain.value = 0.34;
+                    const wetR = ctx.createGain(); wetR.gain.value = 0.34;
+                    const panL = ctx.createStereoPanner ? ctx.createStereoPanner() : null;
+                    const panR = ctx.createStereoPanner ? ctx.createStereoPanner() : null;
+                    if (panL) panL.pan.value = -0.72;
+                    if (panR) panR.pan.value = 0.72;
+
+                    air.connect(dL); air.connect(dR);
+                    dL.connect(dampL); dampL.connect(fbL); fbL.connect(dR);
+                    dR.connect(dampR); dampR.connect(fbR); fbR.connect(dL);
+                    dampL.connect(panL || ctx.destination); if (panL) panL.connect(wetL);
+                    dampR.connect(panR || ctx.destination); if (panR) panR.connect(wetR);
+                    wetL.connect(ctx.destination); wetR.connect(ctx.destination);
+
+                    /* تألّق الأجراس البعيدة (صدى فضي طويل) */
+                    const sh = ctx.createDelay(3); sh.delayTime.value = 0.73;
+                    const shFb = ctx.createGain(); shFb.gain.value = 0.28;
+                    const shDamp = ctx.createBiquadFilter(); shDamp.type = 'lowpass'; shDamp.frequency.value = 1700;
+                    const shWet = ctx.createGain(); shWet.gain.value = 0.2;
+                    air.connect(sh); sh.connect(shDamp); shDamp.connect(shFb); shFb.connect(sh);
+                    shDamp.connect(shWet); shWet.connect(ctx.destination);
                 }
 
-                function playChord(midis) {
-                    const now = ctx.currentTime, dur = 16;
+                /* وسادة وترية دافئة */
+                function playPad(midis) {
+                    const now = ctx.currentTime, dur = 23, atk = 7, rel = 9;
                     midis.forEach((n, i) => {
                         const f = noteFreq(n);
                         const g = ctx.createGain();
-                        const peak = 0.03 / (1 + i * 0.4);
+                        const peak = 0.03 / (1 + i * 0.3);
                         g.gain.setValueAtTime(0.0001, now);
-                        g.gain.linearRampToValueAtTime(peak, now + 5);        // صعود هادئ
-                        g.gain.setValueAtTime(peak, now + dur - 7);
-                        g.gain.linearRampToValueAtTime(0.0001, now + dur);    // خفوت ناعم
+                        g.gain.linearRampToValueAtTime(peak, now + atk);
+                        g.gain.setValueAtTime(peak, now + dur - rel);
+                        g.gain.linearRampToValueAtTime(0.0001, now + dur);
                         g.connect(master);
+                        track(g);
 
-                        const oscs = [-2.5, 2.5].map((cents, k) => {
-                            const o = ctx.createOscillator();
-                            o.type = (k === 0) ? 'sine' : 'triangle';
-                            o.frequency.value = f;
-                            o.detune.value = cents;
-                            const og = ctx.createGain();
-                            og.gain.value = (k === 0) ? 1 : 0.25;
-                            o.connect(og); og.connect(g);
-                            o.start(now + Math.random() * 0.5);
-                            o.stop(now + dur + 0.6);
-                            return o;
-                        });
-                        voices.push({ g, oscs });
+                        const o1 = ctx.createOscillator(); o1.type = 'sine'; o1.frequency.value = f;
+                        const o1g = ctx.createGain(); o1g.gain.value = 1;
+                        o1.connect(o1g); o1g.connect(g);
+                        o1.start(now + Math.random() * 0.6); o1.stop(now + dur + 0.5);
+                        track(o1); track(o1g);
+
+                        const o2 = ctx.createOscillator(); o2.type = 'triangle';
+                        o2.frequency.value = f; o2.detune.value = 5;
+                        const o2g = ctx.createGain(); o2g.gain.value = 0.3;
+                        o2.connect(o2g); o2g.connect(g);
+                        o2.start(now + Math.random() * 0.6); o2.stop(now + dur + 0.5);
+                        track(o2); track(o2g);
                     });
                 }
 
-                function scheduleChords() {
-                    playChord(CHORDS[chordIdx % CHORDS.length]); chordIdx++;
+                /* انتفاخ سينمائي هادئ (طبقة وترية صاعدة) */
+                function playSwell(midis) {
+                    const now = ctx.currentTime, dur = 26, atk = 13, rel = 10;
+                    midis.forEach((n, i) => {
+                        const f = noteFreq(n);
+                        const g = ctx.createGain();
+                        const peak = 0.012 / (1 + i * 0.25);
+                        g.gain.setValueAtTime(0.0001, now);
+                        g.gain.linearRampToValueAtTime(peak, now + atk);
+                        g.gain.setValueAtTime(peak, now + dur - rel);
+                        g.gain.linearRampToValueAtTime(0.0001, now + dur);
+                        g.connect(master);
+                        track(g);
+                        const o = ctx.createOscillator(); o.type = 'sawtooth'; o.frequency.value = f; o.detune.value = -4;
+                        const flt = ctx.createBiquadFilter(); flt.type = 'lowpass'; flt.frequency.value = 760; flt.Q.value = 0.5;
+                        o.connect(flt); flt.connect(g);
+                        o.start(now + Math.random() * 0.8); o.stop(now + dur + 0.6);
+                        track(o); track(flt);
+                    });
+                }
+
+                /* جذر باس ناعم — أدفأ قليلاً */
+                function playBass(midi) {
+                    const now = ctx.currentTime, dur = 20;
+                    const g = ctx.createGain();
+                    g.gain.setValueAtTime(0.0001, now);
+                    g.gain.linearRampToValueAtTime(0.026, now + 3);
+                    g.gain.setValueAtTime(0.026, now + dur - 8);
+                    g.gain.linearRampToValueAtTime(0.0001, now + dur);
+                    g.connect(master);
+                    track(g);
+                    const o = ctx.createOscillator(); o.type = 'sine'; o.frequency.value = noteFreq(midi);
+                    o.connect(g); o.start(now); o.stop(now + dur + 0.4);
+                    track(o);
+                }
+
+                /* قرع كاليمبا ناعم (نقاط لامعة) */
+                function playPluck(midis) {
+                    const n = midis[Math.floor(Math.random() * midis.length)];
+                    const now = ctx.currentTime, f = noteFreq(n);
+                    const g = ctx.createGain();
+                    const peak = 0.017;
+                    g.gain.setValueAtTime(0.0001, now);
+                    g.gain.exponentialRampToValueAtTime(peak, now + 0.02);
+                    g.gain.exponentialRampToValueAtTime(0.0001, now + 1.0);
+                    g.connect(master);
+                    track(g);
+                    const o1 = ctx.createOscillator(); o1.type = 'triangle'; o1.frequency.value = f;
+                    o1.connect(g); o1.start(now); o1.stop(now + 1.1);
+                    track(o1);
+                    const o2 = ctx.createOscillator(); o2.type = 'sine'; o2.frequency.value = f * 2;
+                    const o2g = ctx.createGain(); o2g.gain.value = 0.3;
+                    o2.connect(o2g); o2g.connect(g); o2.start(now); o2.stop(now + 0.8);
+                    track(o2); track(o2g);
+                }
+
+                /* نغمة جرسية سحرية (صناديق موسيقى بعيدة) */
+                function playBell(midi) {
+                    const now = ctx.currentTime, f = noteFreq(midi);
+                    const g = ctx.createGain();
+                    const peak = 0.02 + Math.random() * 0.008;
+                    g.gain.setValueAtTime(0.0001, now);
+                    g.gain.exponentialRampToValueAtTime(peak, now + 0.03);
+                    g.gain.exponentialRampToValueAtTime(0.0001, now + 3.4);
+                    g.connect(master);
+                    track(g);
+                    const o1 = ctx.createOscillator(); o1.type = 'sine'; o1.frequency.value = f;
+                    o1.connect(g); o1.start(now); o1.stop(now + 3.5);
+                    track(o1);
+                    const o2 = ctx.createOscillator(); o2.type = 'sine'; o2.frequency.value = f * 2;
+                    const o2g = ctx.createGain(); o2g.gain.value = 0.32;
+                    o2.connect(o2g); o2g.connect(g); o2.start(now); o2.stop(now + 2.6);
+                    track(o2); track(o2g);
+                }
+
+                /* اللحن العاطفي البطيء — بيانو ناعم (الروح الحماسية الهادئة) */
+                function playMelody(note) {
+                    const now = ctx.currentTime, f = noteFreq(note);
+                    const dur = 2.4 + Math.random() * 0.7;
+                    const g = ctx.createGain();
+                    const peak = 0.034;
+                    g.gain.setValueAtTime(0.0001, now);
+                    g.gain.exponentialRampToValueAtTime(peak, now + 0.02);
+                    g.gain.exponentialRampToValueAtTime(0.0001, now + dur);
+                    g.connect(master);
+                    track(g);
+                    const o1 = ctx.createOscillator(); o1.type = 'sine'; o1.frequency.value = f;
+                    o1.connect(g); o1.start(now); o1.stop(now + dur + 0.3);
+                    track(o1);
+                    const o2 = ctx.createOscillator(); o2.type = 'sine'; o2.frequency.value = f * 2;
+                    const o2g = ctx.createGain(); o2g.gain.value = 0.34;
+                    o2.connect(o2g); o2g.connect(g); o2.start(now); o2.stop(now + dur * 0.7);
+                    track(o2); track(o2g);
+                    const o3 = ctx.createOscillator(); o3.type = 'sine'; o3.frequency.value = f * 3;
+                    const o3g = ctx.createGain(); o3g.gain.value = 0.1;
+                    o3.connect(o3g); o3g.connect(g); o3.start(now); o3.stop(now + dur * 0.5);
+                    track(o3); track(o3g);
+                }
+
+                function schedule() {
+                    const C = CHORDS[chordIdx % CHORDS.length];
+                    playPad(C.pad);
+                    playBass(C.bass);
+                    playSwell(C.pad);
+                    chordIdx++;
+
+                    /* الأجراس */
+                    const firstBell = setTimeout(() => {
+                        const c = CHORDS[chordIdx % CHORDS.length];
+                        playBell(c.bell[Math.floor(Math.random() * c.bell.length)]);
+                    }, 1400);
+                    track({ stop: () => clearTimeout(firstBell) });
+                    bellTimer = setInterval(() => {
+                        const c = CHORDS[chordIdx % CHORDS.length];
+                        playBell(c.bell[Math.floor(Math.random() * c.bell.length)]);
+                    }, 4600);
+
+                    /* الكاليمبا */
+                    pluckTimer = setInterval(() => {
+                        const c = CHORDS[chordIdx % CHORDS.length];
+                        playPluck(c.pluck);
+                    }, 2600);
+
+                    /* اللحن العاطفي — يتقدم في الموتيف مع صمت عرضي وتنويع أوكتاف */
+                    melTimer = setInterval(() => {
+                        const c = CHORDS[chordIdx % CHORDS.length];
+                        const motif = c.mel;
+                        let note = motif[melIdx % motif.length];
+                        melIdx++;
+                        if (Math.random() < 0.18) return;                       // تنفس صامت
+                        if (Math.random() < 0.14) note += 12;                   // قفزة أوكتاف
+                        playMelody(note);
+                    }, 1950);
+
+                    /* الأكوردات التالية */
                     chordTimer = setInterval(() => {
-                        playChord(CHORDS[chordIdx % CHORDS.length]); chordIdx++;
-                    }, 12000);
+                        const c = CHORDS[chordIdx % CHORDS.length];
+                        playPad(c.pad);
+                        playBass(c.bass);
+                        playSwell(c.pad);
+                        chordIdx++;
+                    }, 17000);
                 }
 
                 function setBtnState() {
@@ -3232,8 +3914,8 @@ footer.studio-footer span:last-child {
                     if (ctx.state === 'suspended') ctx.resume();
                     playing = true;
                     master.gain.cancelScheduledValues(ctx.currentTime);
-                    master.gain.setTargetAtTime(0.8, ctx.currentTime, 2.5);   // صعود ناعم جداً
-                    scheduleChords();
+                    master.gain.setTargetAtTime(0.85, ctx.currentTime, 2.2);   // صعود ناعم — حضور أقوى
+                    schedule();
                     setBtnState();
                     try { localStorage.setItem(KEY, 'on'); } catch (e) {}
                 }
@@ -3242,11 +3924,11 @@ footer.studio-footer span:last-child {
                     if (!playing) return;
                     playing = false;
                     if (chordTimer) { clearInterval(chordTimer); chordTimer = null; }
-                    if (ctx) master.gain.setTargetAtTime(0.0001, ctx.currentTime, 1.1);
-                    const dying = voices; voices = [];
-                    setTimeout(() => {
-                        dying.forEach(v => v.oscs.forEach(o => { try { o.stop(); } catch (e) {} }));
-                    }, 4000);
+                    if (bellTimer) { clearInterval(bellTimer); bellTimer = null; }
+                    if (pluckTimer) { clearInterval(pluckTimer); pluckTimer = null; }
+                    if (melTimer) { clearInterval(melTimer); melTimer = null; }
+                    if (ctx) master.gain.setTargetAtTime(0.0001, ctx.currentTime, 1.2);
+                    stopper();
                     setBtnState();
                     try { localStorage.setItem(KEY, 'off'); } catch (e) {}
                 }
@@ -3258,9 +3940,9 @@ footer.studio-footer span:last-child {
 
             // تسميات الزر حسب اللغة
             const ambientLabels = {
-                ar: { on: 'إيقاف الموسيقى الهادئة', off: 'تشغيل الموسيقى الهادئة' },
-                fr: { on: "Couper la musique d'ambiance", off: "Lancer la musique d'ambiance" },
-                en: { on: 'Mute ambient music', off: 'Play ambient music' }
+                ar: { on: 'إيقاف الموسيقى الحماسية الهادئة', off: 'تشغيل الموسيقى الحماسية الهادئة' },
+                fr: { on: "Couper la musique calme et passionnée", off: "Jouer la musique calme et passionnée" },
+                en: { on: 'Silence the calm cinematic ambience', off: 'Play the calm cinematic ambience' }
             };
             window.refreshAmbientLabel = function (l) {
                 const btn = document.getElementById('ambientMusicBtn');
@@ -3321,9 +4003,9 @@ footer.studio-footer span:last-child {
     </div>
 
     <!-- ════════════════════════════════════════════
-       زر الموسيقى الهادئة العائم (Quiet Ambient Music)
+       زر الموسيقى الحماسية الهادئة (Calm Cinematic Music)
     ════════════════════════════════════════════ -->
-    <button type="button" id="ambientMusicBtn" aria-label="الموسيقى الهادئة" title="الموسيقى الهادئة">
+    <button type="button" id="ambientMusicBtn" aria-label="الموسيقى الحماسية الهادئة" title="الموسيقى الحماسية الهادئة">
         <span class="amb-disc" aria-hidden="true"><i class="fa-solid fa-music"></i></span>
         <span class="amb-eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
     </button>
